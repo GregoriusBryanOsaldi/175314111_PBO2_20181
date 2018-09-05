@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package AntrianKlinik;
+package Model;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -64,6 +64,5 @@ public class Main {
         for (int i = 0; i < antrian.length; i++) {
             antrian[i].printInfo();
         }
-
     }
 }

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package AntrianKlinik;
+package Model;
 
 /**
  *
@@ -20,15 +20,17 @@ public class AntrianPasien {
         this.pasien = new Pasien[2];
         this.idx = 0;
         this.idx2 = 0;
-        /*
-        dalam konstruktor ini saya membuat default jika konstruktor-nya dipanggil kelas lain
+        /**
+         * dalam konstruktor ini saya membuat default jika konstruktor-nya
+         * dipanggil kelas lain
          */
+
     }
 
     public Klinik getKlinik() {
         return klinik;
-        /*
-        dalam method ini kita akan mengembalikan value klinik
+        /**
+         * dalam method ini kita akan mengembalikan value klinik
          */
     }
 
@@ -59,7 +61,7 @@ public class AntrianPasien {
         this.klinik = klinik;
         /*
         dalam method ini kita akan menginputkan data klinik
-        */
+         */
     }
 
     public void printInfo() {
