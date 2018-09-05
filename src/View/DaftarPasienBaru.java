@@ -48,7 +48,7 @@ public class DaftarPasienBaru extends JDialog {
         this.add(namaLabel);
 
         namaText = new JTextField(100);
-        namaText.setBounds(150, 70, 110, 15);
+        namaText.setBounds(150, 70, 110, 20);
         this.add(namaText);
 
         //Alamat
@@ -58,7 +58,7 @@ public class DaftarPasienBaru extends JDialog {
         this.add(alamat);
 
         alamatText = new JTextField(100);
-        alamatText.setBounds(150, 120, 110, 15);
+        alamatText.setBounds(150, 120, 110, 20);
         this.add(alamatText);
 
         //Tombol
