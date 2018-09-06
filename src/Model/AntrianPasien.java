@@ -7,63 +7,73 @@ package Model;
 
 /**
  *
- * @author admin
+ * @author 175314111/Gregorius Bryan Osaldi
  */
 public class AntrianPasien {
 
-    private Klinik klinik;
-    private Pasien[] pasien;
-    private int idx, idx2;
+    private Klinik klinik;//mendeklarasikan variabel klinik dengan tipe objek Klinik
+    private Pasien[] pasien;//mendeklarasikan variabel array pasien dengan tipe objek Pasien 
+    private int idx, idx2;//mendeklarasikan variabel idx dan idx2 dengan tipe integer
 
+    /**
+     * dalam konstruktor ini saya membuat default jika konstruktor-nya dipanggil
+     * kelas lain
+     */
     public AntrianPasien() {
         this.klinik = new Klinik();
         this.pasien = new Pasien[2];
         this.idx = 0;
         this.idx2 = 0;
-        /**
-         * dalam konstruktor ini saya membuat default jika konstruktor-nya
-         * dipanggil kelas lain
-         */
-
     }
 
+    /**
+     * method akan mengembalikan nilai klinik jika dipanggil
+     *
+     * @return
+     */
     public Klinik getKlinik() {
         return klinik;
-        /**
-         * dalam method ini kita akan mengembalikan value klinik
-         */
     }
 
+    /**
+     * method akan mengatur nilai klinik dengan parameter klinik yang tipe
+     * data-nya objek Klinik
+     *
+     * @param klinik
+     */
     public void setKlinik(Klinik klinik) {
         this.klinik = klinik;
-        /*
-        dalam method ini kita akan mengatur value klinik dengan parameter Objek klinik
-         */
     }
 
-    public void addPasien(Pasien pasien) throws Exception {
-        if (idx < this.pasien.length) {
-            this.pasien[idx] = pasien;
-            this.idx++;
+    /**
+     * method ini akan menginputkan data setiap pasien dengan parameter pasien
+     * yang bertipe data objek Pasien
+     *
+     * @param pasien
+     * @throws Exception
+     */
+    public void addPasien(Pasien pasien) throws Exception { //method ini akan melemparkan exeption jika ada kesalahan input
+        if (idx < this.pasien.length) { // apakah nilai idx lebih kecil dari banyaknya array pasien?
+            this.pasien[idx] = pasien; // jika jawabannya iya maka variabel array pasien dengan index array-nya adalah idx akan diisi dengan parameter pasien
+            this.idx++; //nilai idx akan ditambah 1 
         } else {
-            throw new Exception("Error Pasien");
+            throw new Exception("Error Pasien"); //jika if bernilai false maka akan melemparkan exeption dengan pesan "Error Pasien"
         }
-        /*
-        dalam method ini kita akan menginputkan data setiap pasien.
-        jika idx < thiis.pasien.length true maka :
-            value dari this.pasien[idx] akan di isi dengan value objek pasien.
-            lalu idx ditambah 1.
-        jika salah maka akan melemparkan exception
-         */
     }
 
+    /**
+     * method ini menginputkan data klinik dengan parameter klinik yang bertipe
+     * data objek Klinik
+     *
+     * @param klinik
+     */
     public void addKlinik(Klinik klinik) {
         this.klinik = klinik;
-        /*
-        dalam method ini kita akan menginputkan data klinik
-         */
     }
 
+    /**
+     * method ini memudahkan kita untuk menampilkan hasil program
+     */
     public void printInfo() {
         klinik.printInfo();
         System.out.println("");
@@ -72,8 +82,5 @@ public class AntrianPasien {
         for (int i = 0; i < idx; i++) {
             pasien[i].printInfo();
         }
-        /*
-        dalam method ini memudahkan kita untuk menampilkan hasil program
-         */
     }
 }
