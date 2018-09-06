@@ -24,7 +24,8 @@ public class Dokter {
      * @return
      */
     public String getNomorPegawai() {
-        return nomorPegawai;
+        String noPegawai = (nomorPegawai + nama.substring(0, 3));
+        return noPegawai;
     }
 
     /**
@@ -33,11 +34,12 @@ public class Dokter {
      *
      * @param nomorPegawai
      */
-    public void setNomorPegawai(String nomorPegawai)throws Exception{
-        if (nomorPegawai.length()==5) {
-            this.nomorPegawai=(nomorPegawai+nama.substring(0,3));
+    public void setNomorPegawai(String nomorPegawai) throws Exception {
+        if (nomorPegawai.length() == 5) {
+            this.nomorPegawai = nomorPegawai;
+        } else {
+            throw new Exception("Nomor Pegawai Error");
         }
-        else throw new Exception("Nomor Pegawai Error");
     }
 
     /**
@@ -162,11 +164,14 @@ public class Dokter {
     public int getTahunLahir() {
         return tahunLahir;
     }
-/**
- * method ini mengatur nilai tahunLahir dengan parameter tahunLahir yang bertipe data integer
- * @param tahunLahir
- * @throws Exception 
- */
+
+    /**
+     * method ini mengatur nilai tahunLahir dengan parameter tahunLahir yang
+     * bertipe data integer
+     *
+     * @param tahunLahir
+     * @throws Exception
+     */
     public void setTahunLahir(int tahunLahir) throws Exception {//method ini akan melemparkan exception jika ada kesalahan input
         if (tahunLahir > 0) {//apakah nilai tahunLahir lebih besar dari 0? jika iya maka akan masuk kedalam perintah if
             this.tahunLahir = tahunLahir;//nilai tahun lahir akan diisi dengan nilai parameter tahunLahir

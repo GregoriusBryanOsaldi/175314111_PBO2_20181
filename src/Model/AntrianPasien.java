@@ -16,7 +16,7 @@ import java.util.Date;
 public class AntrianPasien {
 
     private Klinik klinik;//mendeklarasikan variabel klinik dengan tipe objek Klinik
-    private ArrayList<Pasien> pasien = new ArrayList<Pasien>();//mendeklarasikan variabel array pasien dengan tipe objek ArrayList
+    private ArrayList<Pasien> pasienList = new ArrayList<Pasien>();//mendeklarasikan variabel array pasien dengan tipe objek ArrayList
 
     /**
      * dalam konstruktor ini saya membuat default jika konstruktor-nya dipanggil
@@ -46,11 +46,11 @@ public class AntrianPasien {
     }
 
     public ArrayList<Pasien> getPasien() {
-        return pasien;
+        return pasienList;
     }
 
     public void setPasien(ArrayList<Pasien> pasien) {
-        this.pasien = pasien;
+        this.pasienList = pasien;
     }
 
     public void tanggalSekarang() {
@@ -60,7 +60,7 @@ public class AntrianPasien {
     }
 
     public void Mendaftar(Pasien pasien) {
-        pasien.add(pasien);
+        pasienList.add(pasien);
     }
 
     /**

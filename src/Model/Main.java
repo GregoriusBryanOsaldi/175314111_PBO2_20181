@@ -28,7 +28,7 @@ public class Main {
         //Dokter
         try {
             dokter.setNama("Kiwiliam");
-            dokter.setNomorPegawai("1234354");
+            dokter.setNomorPegawai("12343");
             dokter.setTempatLahir("Tajem");
             dokter.setTanggalLahir(12);
             dokter.setBulanLahir(5);
