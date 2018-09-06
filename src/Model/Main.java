@@ -15,18 +15,21 @@ import java.util.logging.Logger;
 public class Main {
 
     public static void main(String[] args) {
+        //Deklarasi 
+        Klinik klinik = new Klinik();
+        Dokter dokter = new Dokter();
+        Pasien pasien1 = new Pasien();
+        AntrianPasien antrian = new AntrianPasien();
 
-        int jumlahAntrianPasien = 1;
-        AntrianPasien[] antrian = new AntrianPasien[jumlahAntrianPasien];
-
-        System.out.println("Jumlah pasien yang mengantri adalah " + jumlahAntrianPasien);
+        //Klinik 
+        klinik.setIdKlinik("1234521KL");
+        klinik.setNama("Sanata Dharma");
 
         //Dokter
-        Dokter dokter = new Dokter();
-        dokter.setNama("Kiwiliam");
-        dokter.setNomorPegawai("1234354");
-        dokter.setTempatLahir("Tajem");
         try {
+            dokter.setNama("Kiwiliam");
+            dokter.setNomorPegawai("1234354");
+            dokter.setTempatLahir("Tajem");
             dokter.setTanggalLahir(12);
             dokter.setBulanLahir(5);
             dokter.setTahunLahir(1999);
@@ -34,35 +37,28 @@ public class Main {
             System.out.println(ex);
         }
         dokter.setAlamat("Maguwoharjo");
-        
-        //Deklarasi setiap index
-        antrian[0] = new AntrianPasien();
-
-        //Klinik 1
-        Klinik klinik = new Klinik();
-        klinik.setIdKlinik("1234521KL");
-        klinik.setNama("Sanata Dharma");
-        antrian[0].addKlinik(klinik);
 
         //Pasien 1
-        Pasien pasien1 = new Pasien();
-        pasien1.setNama("Gregorius Bryan Osaldi");
-        pasien1.setAlamat("Jalan Paingan 6, Maguwoharjo, Kab.Sleman, Daerah Istimewa Yogyakarta");
-        pasien1.setTempatLahir("Sukaraya");
         try {
+            pasien1.setNama("Gregorius Bryan Osaldi");
+            pasien1.setAlamat("Jalan Paingan 6, Maguwoharjo, Kab.Sleman, Daerah Istimewa Yogyakarta");
+            pasien1.setTempatLahir("Sukaraya");
             pasien1.setTanggalLahir(3);
             pasien1.setBulanLahir(05);
             pasien1.setTahunLahir(2000);
-            pasien1.setNoRekamMedis("GREG");
-            antrian[0].addPasien(pasien1);
         } catch (Exception ex) {
             System.out.println(ex);
         }
 
+        //Mendaftar
+        antrian.setKlinik(klinik);
+        antrian.Mendaftar(pasien1);
+        
         //Print Output
+        antrian.getKlinik().printInfo();
         dokter.printInfo();
-        for (int i = 0; i < antrian.length; i++) {
-            antrian[i].printInfo();
+        for (int i = 0; i <antrian.getPasien().size(); i++) {
+            antrian.printInfo();
         }
     }
 }

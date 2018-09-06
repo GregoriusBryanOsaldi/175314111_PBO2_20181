@@ -15,7 +15,7 @@ import java.util.Date;
 public class Pasien {
 
     private String nama, alamat, tempatLahir;
-    private String noRekamMedis;
+    private String nomorRekamMedis;
     private int tanggalLahir, bulanLahir, tahunLahir;
 
     public Pasien() {
@@ -24,6 +24,7 @@ public class Pasien {
     public String getNama() {
         return nama;
     }
+
     /*
     dalam method ini kita akan mengembalikan value nama
      */
@@ -62,32 +63,18 @@ public class Pasien {
          */
     }
 
-    public String getNoRekamMedis() {
-        return noRekamMedis;
-        /*
-        dalam method ini kita mengembalikan value noRekamMedis
-         */
-    }
-
-    public void setNoRekamMedis(String noRekamMedis) throws Exception {
-        if (noRekamMedis.length() <= 4) {
-            this.noRekamMedis = noRekamMedis;
-        } else {
-            throw new Exception("Karakter yang anda input tidak sesuai");
-        }
-        /*
-        dalam method ini kita memberi batasan untuk nomor 4 digit no rekam medis,
-        karena makasimal nomor rekam medis 12 digit. bagian depan nomor rekam medis 
-        sudah diisi dengan tanggal sekarang sebanyak 8 digit jadi sisa untuk kode nama 
-        hanya 4 digit
-         */
-    }
-
     public int getTanggalLahir() {
         return tanggalLahir;
         /*
         method ini mengembalikan value tanggalLahir
          */
+    }
+
+    public String getNomorRekamMedis() {
+        Date date = new Date();
+        SimpleDateFormat ft = new SimpleDateFormat("ddMMyyyy");
+        nomorRekamMedis = (ft.format(date) + nama.substring(0, 3));
+        return nomorRekamMedis;
     }
 
     public void setTanggalLahir(int tanggalLahir) throws Exception {
@@ -160,30 +147,18 @@ public class Pasien {
          */
     }
 
-    public void getKodeNoRekamMedis() {
-        Date tanggalMasuk = new Date();
-        SimpleDateFormat ft = new SimpleDateFormat("ddMMyyyy");
-        System.out.print(ft.format(tanggalMasuk));
-        System.out.println(getNoRekamMedis());
-        /*
-        dalam method ini terdapat perintah untuk menyusun nomer rekam maedis dimana susunanya
-        diawali dengan tanggal sekarang dan 4 digit kode nama
-        */
-    }
-
     public void getTanggalKelahiran() {
         Date tanggalKelahiran = new Date(getTahunLahir() - 1900, getBulanLahir() - 1, getTanggalLahir());
         SimpleDateFormat ft = new SimpleDateFormat("dd - MM - yyyy");
         System.out.println(ft.format(tanggalKelahiran));
         /*
         method ini digunakan untuk mebuat format tanggal kelahiran dengan objek Date
-        */
+         */
     }
 
     public void printInfo() {
         System.out.printf("%-25s", "Nomor Rekam Medis Pasien");
-        System.out.print(": ");
-        getKodeNoRekamMedis();
+        System.out.println(": "+getNomorRekamMedis());
         System.out.printf("%-25s", "Nama Pasien");
         System.out.println(": " + nama);
         System.out.printf("%-25s", "Tempat, Tanggal Lahir");
@@ -194,6 +169,6 @@ public class Pasien {
         System.out.println("");
         /*
         method ini membuat kita lebih mudah saat akan menampilkannya di main
-        */
+         */
     }
 }

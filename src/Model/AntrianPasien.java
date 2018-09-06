@@ -5,6 +5,10 @@
  */
 package Model;
 
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+
 /**
  *
  * @author 175314111/Gregorius Bryan Osaldi
@@ -12,18 +16,14 @@ package Model;
 public class AntrianPasien {
 
     private Klinik klinik;//mendeklarasikan variabel klinik dengan tipe objek Klinik
-    private Pasien[] pasien;//mendeklarasikan variabel array pasien dengan tipe objek Pasien 
-    private int idx, idx2;//mendeklarasikan variabel idx dan idx2 dengan tipe integer
+    private ArrayList<Pasien> pasien = new ArrayList<Pasien>();//mendeklarasikan variabel array pasien dengan tipe objek ArrayList
 
     /**
      * dalam konstruktor ini saya membuat default jika konstruktor-nya dipanggil
      * kelas lain
      */
     public AntrianPasien() {
-        this.klinik = new Klinik();
-        this.pasien = new Pasien[2];
-        this.idx = 0;
-        this.idx2 = 0;
+
     }
 
     /**
@@ -45,42 +45,31 @@ public class AntrianPasien {
         this.klinik = klinik;
     }
 
-    /**
-     * method ini akan menginputkan data setiap pasien dengan parameter pasien
-     * yang bertipe data objek Pasien
-     *
-     * @param pasien
-     * @throws Exception
-     */
-    public void addPasien(Pasien pasien) throws Exception { //method ini akan melemparkan exeption jika ada kesalahan input
-        if (idx < this.pasien.length) { // apakah nilai idx lebih kecil dari banyaknya array pasien?
-            this.pasien[idx] = pasien; // jika jawabannya iya maka variabel array pasien dengan index array-nya adalah idx akan diisi dengan parameter pasien
-            this.idx++; //nilai idx akan ditambah 1 
-        } else {
-            throw new Exception("Error Pasien"); //jika if bernilai false maka akan melemparkan exeption dengan pesan "Error Pasien"
-        }
+    public ArrayList<Pasien> getPasien() {
+        return pasien;
     }
 
-    /**
-     * method ini menginputkan data klinik dengan parameter klinik yang bertipe
-     * data objek Klinik
-     *
-     * @param klinik
-     */
-    public void addKlinik(Klinik klinik) {
-        this.klinik = klinik;
+    public void setPasien(ArrayList<Pasien> pasien) {
+        this.pasien = pasien;
+    }
+
+    public void tanggalSekarang() {
+        Date date = new Date();
+        SimpleDateFormat ft = new SimpleDateFormat("E dd/MM/yyy 'at' hh:mm:ss");
+        System.out.println(ft.format(date));
+    }
+
+    public void Mendaftar(Pasien pasien) {
+        pasien.add(pasien);
     }
 
     /**
      * method ini memudahkan kita untuk menampilkan hasil program
      */
     public void printInfo() {
-        klinik.printInfo();
         System.out.println("");
         System.out.printf("%-20s", "");
         System.out.println("Daftar Antrian Pasien" + "\n");
-        for (int i = 0; i < idx; i++) {
-            pasien[i].printInfo();
-        }
+        
     }
 }

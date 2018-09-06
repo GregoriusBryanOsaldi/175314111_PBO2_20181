@@ -10,142 +10,168 @@ import java.util.Date;
 
 /**
  *
- * @author DELL
+ * @author 175314111/Gregorius Bryan Osaldi
  */
 public class Dokter {
 
-    private String nomorPegawai;
-    private String nama, alamat, tempatLahir;
-    private int tanggalLahir, bulanLahir, tahunLahir;
+    private String nomorPegawai; //mendeklarasikan variabel nomorPegawai dengan tipe data String
+    private String nama, alamat, tempatLahir; //mendeklarasikan variable nama, alamat, tempatLahir dengan tipe data String
+    private int tanggalLahir, bulanLahir, tahunLahir; //mendeklarasikan variabel tanggalLahir, bulanLahir, tahunLahir dengan tipe data integer
 
-    public Dokter() {
-    }
-
+    /**
+     * method akan mengembalikan nilai nomorPegawai jika dipanggil
+     *
+     * @return
+     */
     public String getNomorPegawai() {
         return nomorPegawai;
-        /*
-        dalam method ini kita mengembalikan value nomorPegawai
-        */
     }
 
-    public void setNomorPegawai(String nomorPegawai) {
-        this.nomorPegawai = nomorPegawai;
-        /*
-        dalam metthod ini kita akan mengatur value nomorPegawai dengan parameter nomorPegawai
-        */
+    /**
+     * method akan mengatur nilai nomorPegawai dengan parameter nomorPegawai
+     * yang bertipe data String
+     *
+     * @param nomorPegawai
+     */
+    public void setNomorPegawai(String nomorPegawai)throws Exception{
+        if (nomorPegawai.length()==5) {
+            this.nomorPegawai=(nomorPegawai+nama.substring(0,3));
+        }
+        else throw new Exception("Nomor Pegawai Error");
     }
 
+    /**
+     * method akan mengembalikan nilai nama jika dipanggil
+     *
+     * @return
+     */
     public String getNama() {
         return nama;
-        /*
-        dalam method ini kita mengembalikan value nama
-        */
     }
 
+    /**
+     * method akan mengatur nilai nama dengan parameter nama yang bertipe data
+     * String
+     *
+     * @param nama
+     */
     public void setNama(String nama) {
         this.nama = nama;
-        /*
-        dalam method ini kita mengatur value nama dengan parameter nama
-        */
     }
 
+    /**
+     * method akan mengembalikan nilai alamat jika dipanggil
+     *
+     * @return
+     */
     public String getAlamat() {
         return alamat;
-        /*
-        dalam method ini kita mengembalikan value alamat
-        */
     }
 
+    /**
+     * method akan mengatur nilai alamat dengan parameter alamat yang bertipe
+     * data String
+     *
+     * @param alamat
+     */
     public void setAlamat(String alamat) {
         this.alamat = alamat;
-        /*
-        dalam method ini kita mengatur value alamat dengan parameter alamat
-        */
     }
 
+    /**
+     * method akan mengembalikan nilai tempatLahir jika dipanggil
+     *
+     * @return
+     */
     public String getTempatLahir() {
         return tempatLahir;
-        /*
-        dalam method ini kita mengembalikan value tempatLahir
-        */
     }
 
+    /**
+     * method akan mengatur nilai tenpatLahir dengan parameter tempatLahir yang
+     * bertipe data String
+     *
+     * @param tempatLahir
+     */
     public void setTempatLahir(String tempatLahir) {
         this.tempatLahir = tempatLahir;
-        /*
-        dalam method ini kita mengatur value tempatLahir dengan parameter tempatLahir
-        */
     }
 
+    /**
+     * method akan mengembalikan nilai tanggalLahir jika dipanggil
+     *
+     * @return
+     */
     public int getTanggalLahir() {
         return tanggalLahir;
-        /*
-        dalam method ini kita mengembalikan value tanggalLahir
-        */
     }
 
-    public void setTanggalLahir(int tanggalLahir) throws Exception {
-        if (tanggalLahir > 0) {
-            if (tanggalLahir <= 31) {
-                this.tanggalLahir = tanggalLahir;
+    /**
+     * method akan mengatur nilai tanggalLahir dengan parameter tanggalLahir
+     * yang bertipe data integer
+     *
+     * @param tanggalLahir
+     * @throws Exception
+     */
+    public void setTanggalLahir(int tanggalLahir) throws Exception { //meyhod akan melemparkan exception jika ada kesalahan input
+        if (tanggalLahir > 0) { // apakah nilai tanggalLahir lebih besar dari 0? jika iya maka akan masuk kedalam perintah if
+            if (tanggalLahir <= 31) { // apakah nilai tanggalLahir lebih kecil sama dengan 31? jika iya maka akan masuk kedalam perintah if
+                this.tanggalLahir = tanggalLahir; // nilai tanggalLahir akan diisi dengan nilai parameter tanggalLahir
             } else {
-                throw new Exception("Tanggal lahir yang anda masukkan tidak valid");
+                throw new Exception("Tanggal lahir yang anda masukkan lebih dari 30"); // jika nilai tanggalLahir lebih besar dari 31 maka akan melemparkan exception 
             }
 
         } else {
-            throw new Exception("Tanggal lahir yang anda masukkan tidak valid");
+            throw new Exception("Tanggal lahir yang anda masukkan kurang dari 0"); // jika nilai tanggalLahir lebih kecil sama dengan 0 maka akan melemparkan exception
         }
-        /*
-        Dalam method ini kita mengatur(set)tanggal lahir dokter.
-        jika tanggal lahir yang diinputkan lebih besar dari 0 maka akan masuk kedalam if. kemudian dicek
-        kembali apakah tanggal lahir kurang dari sama dengan 31. jika true maka akan masuk kedalam if dan jika tidak
-        masuk kedalam else dan melemparkan exeption
-
-        jika tanggal lahir kurang dari sama dengan 0 maka akan masuk kedalah else dan melemparkan exception.
-        
-         */
     }
 
+    /**
+     * method akan mengembalikan nilai bulanLahir jika dipanggil
+     *
+     * @return
+     */
     public int getBulanLahir() {
         return bulanLahir;
-        /*
-        dalam method ini kita akan mengembalikan value bulanLahir
-        */
     }
 
-    public void setBulanLahir(int bulanLahir) throws Exception {
-        if (bulanLahir > 0) {
-            if (bulanLahir <= 12) {
-                this.bulanLahir = bulanLahir;
+    /**
+     * methid akan mengatur nilai bulanLahir dengan parameter bulanLahir yang
+     * bertipe data integer
+     *
+     * @param bulanLahir
+     * @throws Exception
+     */
+    public void setBulanLahir(int bulanLahir) throws Exception {//method ini akan melemparkan exception jika ada kesalahan input
+        if (bulanLahir > 0) {//apakah nilai bulanLahir lebih besar dari 0? jika iya maka akan masuk kedalam perintah if
+            if (bulanLahir <= 12) {//apakah nilai bulanLahir lebih kecil sama dengan 12? jika iya maka akan masuk kedalam perintah if
+                this.bulanLahir = bulanLahir;//nilai bulanLahir akan diisi dengan nilai parameter bulanLahir
             } else {
-                throw new Exception("Bulan lahir yang anda masukkan tidak valid");
+                throw new Exception("Bulan lahir yang anda masukkan lebih dari 12");//jika nilai bulanLahir lebih besar dari 12 maka akan melemparkan exception
             }
         } else {
-            throw new Exception("Bulan lahir yang anda masukkan tidak valid");
+            throw new Exception("Bulan lahir yang anda masukkan kurang dari 0");//jika nilai bulanLahir lebih kecil sama dengan 0 maka akan melemparkan exception
         }
-       /*
-        Dalam method ini kita mengatur(set)bulan lahir dokter.
-        jika tanggal lahir yang diinputkan lebih besar dari 0 maka akan masuk kedalam if. kemudian dicek
-        kembali apakah bulan lahir kurang dari sama dengan 12. jika true maka akan masuk kedalam if dan jika tidak
-        masuk kedalam else dan melemparkan exeption
-
-        jika bulan lahir kurang dari sama dengan 0 maka akan masuk kedalah else dan melemparkan exception.
-        
-         */
     }
 
+    /**
+     * method ini akan mengembalikan nilai tahunLahir jika dipanggil
+     *
+     * @return
+     */
     public int getTahunLahir() {
         return tahunLahir;
-        /*
-        dalam method ini kita mengembalikan value tahunLahir
-        */
     }
-
-    public void setTahunLahir(int tahunLahir) throws Exception {
-        if (tahunLahir > 0) {
-            this.tahunLahir = tahunLahir;
+/**
+ * method ini mengatur nilai tahunLahir dengan parameter tahunLahir yang bertipe data integer
+ * @param tahunLahir
+ * @throws Exception 
+ */
+    public void setTahunLahir(int tahunLahir) throws Exception {//method ini akan melemparkan exception jika ada kesalahan input
+        if (tahunLahir > 0) {//apakah nilai tahunLahir lebih besar dari 0? jika iya maka akan masuk kedalam perintah if
+            this.tahunLahir = tahunLahir;//nilai tahun lahir akan diisi dengan nilai parameter tahunLahir
         } else {
-            throw new Exception("Tahun lahair yang anda masukkan tidak valid");
+            throw new Exception("Tahun lahair yang anda masukkan tidak valid");//jika nilai tahunLahir lebih besar dari 
         }
         /*
         Dalam method ini kita mengatur(set)tahun lahir dokter.
@@ -161,7 +187,7 @@ public class Dokter {
         System.out.println(ft.format(tanggalKelahiran));
         /*
         dalam method ini kita membuat format tanggal kelahiran dokter agar lebih mudah
-        */
+         */
     }
 
     public void printInfo() {
@@ -179,6 +205,6 @@ public class Dokter {
         getTanggalKelahiranDokter();
         /*
         dalam method ini kita dimudahkan saat akan menampilkan karena hanya memanggil method ini saja
-        */
+         */
     }
 }

@@ -14,6 +14,10 @@ public class Klinik {
     private String idKlinik;
     private String nama;
 
+    public Klinik() {
+
+    }
+
     public String getIdKlinik() {
         return idKlinik;
         /*
@@ -51,6 +55,6 @@ public class Klinik {
         System.out.println(getIdKlinik());
         /*
         method ini memudahkan kita untuk menampilkan hasil output
-        */
+         */
     }
 }
