@@ -196,7 +196,7 @@ public class Dokter {
     }
 
     public void printInfo() {
-        System.out.println("\n");
+        System.out.println();
         System.out.printf("%-20s", "");
         System.out.println("Biodata Dokter" + "\n");
         System.out.printf("%-25s", "Nomor Pegawai");

@@ -3,8 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Model;
+package TestView;
 
+import Model.AntrianPasien;
+import Model.Dokter;
+import Model.Klinik;
+import Model.Pasien;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -12,7 +16,7 @@ import java.util.logging.Logger;
  *
  * @author DELL
  */
-public class Main {
+public class TestModel {
 
     public static void main(String[] args) {
         //Deklarasi 

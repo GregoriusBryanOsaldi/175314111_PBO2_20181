@@ -16,11 +16,10 @@ import java.util.Date;
 public class AntrianPasien {
 
     private Klinik klinik;//mendeklarasikan variabel klinik dengan tipe objek Klinik
-    private ArrayList<Pasien> pasienList = new ArrayList<Pasien>();//mendeklarasikan variabel array pasien dengan tipe objek ArrayList
+    private ArrayList<Pasien> pasienList = new ArrayList<Pasien>();//mendeklarasikan variabel array pasienList dengan tipe objek ArrayList
 
     /**
-     * dalam konstruktor ini saya membuat default jika konstruktor-nya dipanggil
-     * kelas lain
+     * konstruktor untuk mendeklarasikan objek AntrianPasien
      */
     public AntrianPasien() {
 
@@ -36,8 +35,8 @@ public class AntrianPasien {
     }
 
     /**
-     * method akan mengatur nilai klinik dengan parameter klinik yang tipe
-     * data-nya objek Klinik
+     * method akan mengatur nilai klinik sama dengan nilai parameter klinik
+     * dengan tipe data-nya objek Klinik
      *
      * @param klinik
      */
@@ -45,20 +44,28 @@ public class AntrianPasien {
         this.klinik = klinik;
     }
 
+    /**
+     * mathod akan mengembalikan nilai pasienList jika dipanggil
+     *
+     * @return
+     */
     public ArrayList<Pasien> getPasien() {
         return pasienList;
     }
 
+    /**
+     * method akan mengatur nilai pasienList sama dengan nilai parameter pasien
+     *
+     * @param pasien
+     */
     public void setPasien(ArrayList<Pasien> pasien) {
         this.pasienList = pasien;
     }
 
-    public void tanggalSekarang() {
-        Date date = new Date();
-        SimpleDateFormat ft = new SimpleDateFormat("E dd/MM/yyy 'at' hh:mm:ss");
-        System.out.println(ft.format(date));
-    }
-
+    /**
+     * method untuk mendaftar pasien baru di nomor antrian
+     * @param pasien 
+     */
     public void Mendaftar(Pasien pasien) {
         pasienList.add(pasien);
     }
@@ -71,7 +78,7 @@ public class AntrianPasien {
         System.out.printf("%-20s", "");
         System.out.println("Daftar Antrian Pasien" + "\n");
         for (int i = 0; i < pasienList.size(); i++) {
-            pasienList.get(i).printInfo();
+            pasienList.get(i).printInfo(); //mengeprint data pasien setiap index
         }
     }
 }
