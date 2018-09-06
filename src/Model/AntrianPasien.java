@@ -70,6 +70,8 @@ public class AntrianPasien {
         System.out.println("");
         System.out.printf("%-20s", "");
         System.out.println("Daftar Antrian Pasien" + "\n");
-        
+        for (int i = 0; i < pasienList.size(); i++) {
+            pasienList.get(i).printInfo();
+        }
     }
 }
