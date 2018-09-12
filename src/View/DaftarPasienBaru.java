@@ -17,11 +17,11 @@ import javax.swing.JTextField;
 public class DaftarPasienBaru extends JDialog {
 
     private JLabel judullabel;
-    private JLabel noRM;
+    private JLabel NIK;
     private JLabel namaLabel;
     private JLabel alamat;
     private JTextField namaText;
-    private JTextField noRMText;
+    private JTextField NIKText;
     private JTextField alamatText;
     private JButton saveButton;
 
@@ -60,6 +60,11 @@ public class DaftarPasienBaru extends JDialog {
         alamatText = new JTextField(100);
         alamatText.setBounds(150, 120, 110, 20);
         this.add(alamatText);
+        
+        //Tanggal Lahir
+        this.setLayout(null);
+//        NIK=new JLabel("NIK");
+//        NIK.setBounds(150, WIDTH, HEIGHT);
 
         //Tombol
         saveButton = new JButton("Simpan");
