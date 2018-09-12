@@ -44,6 +44,7 @@ public class TestModel {
 
         //Pasien 1
         try {
+            pasien1.setNIK("1234567890123456");
             pasien1.setNama("Gregorius Bryan Osaldi");
             pasien1.setAlamat("Jalan Paingan 6, Maguwoharjo, Kab.Sleman, Daerah Istimewa Yogyakarta");
             pasien1.setTempatLahir("Sukaraya");
@@ -64,5 +65,6 @@ public class TestModel {
         for (int i = 0; i <antrian.getPasien().size(); i++) {
             antrian.printInfo();
         }
+        
     }
 }

@@ -6,6 +6,7 @@
 package Model;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -15,10 +16,21 @@ import java.util.Date;
 public class Pasien {
 
     private String nama, alamat, tempatLahir;
-    private String nomorRekamMedis;
+    private String nomorRekamMedis, NIK;
     private int tanggalLahir, bulanLahir, tahunLahir;
+    public static ArrayList<Pasien> daftarPasien = new ArrayList<Pasien>();
 
     public Pasien() {
+    }
+
+    public Pasien(String nama, String alamat, String tempatLahir, int tanggalLahir, int bulanLahir, int tahunLahir, String NIK) {
+        this.nama = nama;
+        this.alamat = alamat;
+        this.tempatLahir = tempatLahir;
+        this.NIK = NIK;
+        this.tanggalLahir = tanggalLahir;
+        this.bulanLahir = bulanLahir;
+        this.tahunLahir = tahunLahir;
     }
 
     public String getNama() {
@@ -70,10 +82,20 @@ public class Pasien {
          */
     }
 
+    public String getNIK() {
+        return NIK;
+    }
+
+    public void setNIK(String NIK) throws Exception {
+        if (NIK.length() == 16) {
+            this.NIK = NIK;
+        } else {
+            throw new Exception("Nomor Induk Kependudukan terdiri dari 16 karakter");
+        }
+    }
+
     public String getNomorRekamMedis() {
-        Date date = new Date();
-        SimpleDateFormat ft = new SimpleDateFormat("ddMMyyyy");
-        nomorRekamMedis = (ft.format(date) + nama.substring(0, 3));
+        nomorRekamMedis = NIK;
         return nomorRekamMedis;
     }
 
@@ -156,9 +178,29 @@ public class Pasien {
          */
     }
 
+    public static ArrayList<Pasien> daftarPasienKlinik() {
+        return daftarPasien;
+    }
+
+    public static void tambahPasienBaru(Pasien pasienBaru) {
+        daftarPasien.add(pasienBaru);
+    }
+
+    public static Pasien cariPasien(String NoRM) {
+        Pasien result = null;
+        boolean found = false;
+        for (int i = 0; i < daftarPasien.size() && found == false; i++) {
+            if (daftarPasien.get(i).NIK.equals(NoRM)) {
+                found = true;
+                result = daftarPasien.get(i);
+            }
+        }
+        return result;
+    }
+
     public void printInfo() {
         System.out.printf("%-25s", "Nomor Rekam Medis Pasien");
-        System.out.println(": "+getNomorRekamMedis());
+        System.out.println(": " + getNomorRekamMedis());
         System.out.printf("%-25s", "Nama Pasien");
         System.out.println(": " + nama);
         System.out.printf("%-25s", "Tempat, Tanggal Lahir");
