@@ -5,6 +5,7 @@
  */
 package View;
 
+import javax.swing.ComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -73,16 +74,9 @@ public class DaftarPasienBaru extends JFrame {
         this.add(tanggalLahir);
 
         //Tombol Tanggal Lahir
-//        String[] tanggal = {"Pilih", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10",
-//            "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24",
-//            "25", "26", "27", "28", "29", "30", "31"};
-//       
-        int tgl = 1;
-        ComboboxItem 
-        do {
-            tahunButton.addItem(tgl);
-            tgl++;
-        } while (tanggal <= 31);
+        String[] tanggal = {"Pilih", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10",
+            "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24",
+            "25", "26", "27", "28", "29", "30", "31"};
         tanggalButton = new JComboBox(tanggal);
         tanggalButton.setBounds(150, 110, 60, 20);
         this.add(tanggalButton);
