@@ -65,7 +65,7 @@ public class MainFrame extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == tambahPasien) {
             DaftarPasienBaru pasienBaru = new DaftarPasienBaru();
-            pasienBaru.setSize(500, 510);
+            pasienBaru.setSize(550, 250);
             pasienBaru.setVisible(true);
         }
         if (e.getSource() == tambahAntrian) {
