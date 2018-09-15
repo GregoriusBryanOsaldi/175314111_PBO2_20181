@@ -13,7 +13,7 @@ import View.DaftarPasienBaru;
 public class TestDaftarPasienBaru {
     public static void main(String[] args) {
         DaftarPasienBaru test=new DaftarPasienBaru();
-        test.setSize(500, 300);
+        test.setSize(550, 250);
         test.setVisible(true);
     }
 }
