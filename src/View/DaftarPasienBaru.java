@@ -5,6 +5,7 @@
  */
 package View;
 
+import java.util.Date;
 import javax.swing.ComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
