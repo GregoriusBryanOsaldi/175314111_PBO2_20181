@@ -5,7 +5,6 @@
  */
 package View;
 
-import java.util.Date;
 import javax.swing.ComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -25,8 +24,10 @@ public class DaftarPasienBaru extends JFrame {
     private JLabel tahunLahir;
     private JLabel namaLabel;
     private JLabel alamat;
+    private JLabel noRM;
     private JTextField namaText;
     private JTextField alamatText;
+    private JTextField noRMText;
     private JButton saveButton;
     private JComboBox tanggalButton;
     private JComboBox bulanButton;
@@ -44,8 +45,8 @@ public class DaftarPasienBaru extends JFrame {
     public void init() {
         //judul 
         this.setLayout(null);
-        judullabel = new JLabel("DAFTAR PASIEN BARU");
-        judullabel.setBounds(225, 15, 150, 10);
+        judullabel = new JLabel("PASIEN BARU");
+        judullabel.setBounds(250, 15, 150, 10);
         this.add(judullabel);
 
         //nama

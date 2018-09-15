@@ -37,18 +37,18 @@ public class DaftarAntrianDialog extends JDialog {
     public void init() {
         //judul 
         this.setLayout(null);
-        judullabel = new JLabel("DAFTAR PASIEN");
-        judullabel.setBounds(80, 20, 150, 10);
+        judullabel = new JLabel("TAMBAH ANTRIAN");
+        judullabel.setBounds(250, 15, 150, 10);
         this.add(judullabel);
 
         //no RM
         this.setLayout(null);
         noRM = new JLabel("No Rekam Medis");
-        noRM.setBounds(20, 70, 100, 10);
+        noRM.setBounds(20, 50, 100, 15);
         this.add(noRM);
 
         noRMText = new JTextField();
-        noRMText.setBounds(150, 70, 110, 15);
+        noRMText.setBounds(150, 50, 100, 20);
         this.add(noRMText);
 
         //nama
