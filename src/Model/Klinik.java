@@ -14,38 +14,53 @@ public class Klinik {
     private String idKlinik;
     private String nama;
 
+    /**
+     * konstruktor untuk mendeklarasikan kelas Klinik
+     */
     public Klinik() {
 
     }
 
+    /**
+     * mengembalikan nilai variabel idKlinik
+     *
+     * @return
+     */
     public String getIdKlinik() {
         return idKlinik;
-        /*
-        dalam method ini kita mengembalikan value idKlinik
-         */
     }
 
+    /**
+     * dalam method ini kita mengatur value idKlinik dengan parameter idKlinik
+     *
+     * @param idKlinik
+     */
     public void setIdKlinik(String idKlinik) {
         this.idKlinik = idKlinik;
-        /*
-        dalam method ini kita mengatur value idKlinik dengan parameter idKlinik
-         */
     }
 
+    /**
+     * mengembalikan nilai variabel nama
+     *
+     * @return
+     */
     public String getNama() {
         return nama;
-        /*
-        dalam method ini kita mengembalikan value nama
-         */
     }
 
+    /**
+     * dalam method ini kita mengatur value nama dengan parameter nama
+     *
+     * @param nama
+     */
     public void setNama(String nama) {
         this.nama = nama;
-        /*
-        dalam method ini kita mengatur value nama dengan parameter nama
-         */
+
     }
 
+    /**
+     * method ini memudahkan kita untuk menampilkan hasil output
+     */
     public void printInfo() {
         System.out.println("");
         System.out.printf("%-20s", "");
@@ -53,8 +68,6 @@ public class Klinik {
         System.out.printf("%-25s", "Nomor ID Klinik");
         System.out.print(": ");
         System.out.println(getIdKlinik());
-        /*
-        method ini memudahkan kita untuk menampilkan hasil output
-         */
+
     }
 }

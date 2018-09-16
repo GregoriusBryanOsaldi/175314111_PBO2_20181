@@ -38,50 +38,76 @@ public final class DaftarAntrianDialog extends JDialog implements ActionListener
     private JComboBox klinikButton;
     private JButton daftarButton;
 
+    /**
+     * konstruktor untuk membuat objek
+     */
     public DaftarAntrianDialog() {
+        //memanggil method init()
         init();
     }
 
+    /**
+     * konstruktor untuk membuat objek dengan parameter title yang bertipe
+     * String
+     *
+     * @param title
+     */
     public DaftarAntrianDialog(String title) {
+        //mengset nilai title sama dengan parameter title
         this.setTitle(title);
+        //memanggil method init()
         init();
     }
 
     public void init() {
-        //judul 
+
+        //mengset layout dengan null
         this.setLayout(null);
+
+        //membuat objek judul label yang bertipe JLable dengan text
         judullabel = new JLabel("TAMBAH ANTRIAN");
+        //mengset posisi dan ukuran objek
         judullabel.setBounds(230, 15, 150, 10);
+        //menambahkan judul label ke DaftarAntrianDialog
         this.add(judullabel);
 
-        //no RM
-        this.setLayout(null);
+        //membuat objek nomor rekam medis yang bertipe JLable dengan text
         noRM = new JLabel("No Rekam Medis");
+        //mengset posisi dan ukuran objek
         noRM.setBounds(20, 50, 100, 15);
+        //menambahkan noRM ke DaftarAntrianDialog
         this.add(noRM);
 
+        // membuat object noRMtext yang bertipe JTextField
         noRMText = new JTextField();
+        // mengatur posisi dan ukuran object
         noRMText.setBounds(150, 50, 350, 20);
+        //menambah noRMtext ke DaftarAntrianDialog
         this.add(noRMText);
-
+        //noRMText memanggil method addActionListener
         noRMText.addActionListener(this);
 
-        //nama
-        this.setLayout(null);
+        // membuat object nama yang bertipe JLabel dengan text
         nama = new JLabel("Nama");
+        // mengatur posisi dan ukuran object
         nama.setBounds(20, 80, 50, 15);
+        //menambah namalabel ke DaftarAntrianDialog
         this.add(nama);
 
+        // membuat object namatext yang bertipe JTextField
         namaText = new JTextField(100);
+        // mengatur posisi dan ukuran object
         namaText.setBounds(150, 80, 350, 20);
+        //menambah namatext ke TambahAntrianDialog
         this.add(namaText);
-
+        //namatext memanggil method addActionListener
         namaText.addActionListener(this);
 
-        //Alamat
-        this.setLayout(null);
+        // membuat object alamat yang bertipe JLabel dengan text
         alamat = new JLabel("Alamat");
+        // mengatur posisi dan ukuran object
         alamat.setBounds(20, 110, 100, 15);
+        //menambah alamat ke DaftarAntrianDialog
         this.add(alamat);
 
         alamatText = new JTextField(100);

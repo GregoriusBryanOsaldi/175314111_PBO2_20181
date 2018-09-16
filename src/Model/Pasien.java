@@ -20,9 +20,23 @@ public class Pasien {
     private int tanggalLahir, bulanLahir, tahunLahir;
     public static ArrayList<Pasien> daftarPasien = new ArrayList<Pasien>();
 
+    /**
+     * konstruktor untuk mendeklarasikan kelas Pasien
+     */
     public Pasien() {
     }
 
+    /**
+     * konstruktor untuk mendeklarasikan kelas Pasien dengan parameter
+     *
+     * @param nama
+     * @param alamat
+     * @param tempatLahir
+     * @param tanggalLahir
+     * @param bulanLahir
+     * @param tahunLahir
+     * @param NIK
+     */
     public Pasien(String nama, String alamat, String tempatLahir, int tanggalLahir, int bulanLahir, int tahunLahir, String NIK) {
         this.nama = nama;
         this.alamat = alamat;
@@ -33,55 +47,81 @@ public class Pasien {
         this.tahunLahir = tahunLahir;
     }
 
+    /**
+     * dalam method ini kita akan mengembalikan value nama
+     *
+     * @return
+     */
     public String getNama() {
         return nama;
     }
 
-    /*
-    dalam method ini kita akan mengembalikan value nama
+    /**
+     * dalam method ini kita akan mengatur value nama dengan parameter alamat
+     *
+     * @param nama
      */
     public void setNama(String nama) {
         this.nama = nama;
-        /*
-        dalam method ini kita akan mengatur value nama dengan parameter alamat
-         */
+
     }
 
+    /**
+     * dalam method ini kita akan mengembalikan value alamat
+     *
+     * @return
+     */
     public String getAlamat() {
         return alamat;
-        /*
-        dalam method ini kita akan mengembalikan value alamat
-         */
+
     }
 
+    /**
+     * dalam method ini kita akan mengatur value alamat dengan parameter alamat
+     *
+     * @param alamat
+     */
     public void setAlamat(String alamat) {
         this.alamat = alamat;
-        /*
-        dalam method ini kita akan mengatur value alamat dengan parameter alamat
-         */
+
     }
 
+    /**
+     * dalam method ini kita akan mengembalikan value tempatLahir
+     *
+     * @return
+     */
     public String getTempatLahir() {
         return tempatLahir;
-        /*
-        dalam method ini kita akan mengembalikan value tempatLahir
-         */
+
     }
 
+    /**
+     * dalam method ini kita akan mengatur value tempatLahir dengan parameter
+     * tempatLahir
+     *
+     * @param tempatLahir
+     */
     public void setTempatLahir(String tempatLahir) {
         this.tempatLahir = tempatLahir;
-        /*
-        dalam method ini kita akan mengatur value tempatLahir dengan parameter tempatLahir
-         */
     }
 
+    /**
+     * method ini mengembalikan value tanggalLahir
+     *
+     * @return
+     */
     public int getTanggalLahir() {
         return tanggalLahir;
-        /*
-        method ini mengembalikan value tanggalLahir
-         */
     }
 
+    /**
+     * mengset nilai variabel NIK sama dengan parameter NIK dengan tipe data
+     * String
+     *
+     * @param NIK
+     * @throws Exception
+     */
     public void setNIK(String NIK) throws Exception {
         if (NIK.length() == 16) {
             this.NIK = NIK;
@@ -90,22 +130,48 @@ public class Pasien {
         }
     }
 
+    /**
+     * mengembalikan nilai NIK
+     *
+     * @return
+     */
     public String getNIK() {
         return NIK;
     }
 
+    /**
+     * mengembalikan nilai nomorRekamMedis
+     *
+     * @return
+     */
     public String getNomorRekamMedis() {
         return nomorRekamMedis;
     }
 
+    /**
+     * mengset nilai variabel nomorRekamMedis sama dengan NIK
+     *
+     * @param nomorRekamMedis
+     * @throws Exception
+     */
     public void setNomorRekamMedis(String nomorRekamMedis) throws Exception {
+        //pengecekan panjang karakter variabel nomorRekamMedis harus sama dengan 16
         if (nomorRekamMedis.length() == 16) {
+            //nilai variabel nomorRekamMedis sama dengan NIK
             this.nomorRekamMedis = NIK;
         } else {
+            //pesan jika bernilai false
             throw new Exception("Nomor Rekam Medis terdiri dari 16 karakter ");
         }
     }
 
+    /**
+     * mengset nilai tanggalLahir sama dengan nilai parameter tanggalLahir
+     * dengan tipe data integer
+     *
+     * @param tanggalLahir
+     * @throws Exception
+     */
     public void setTanggalLahir(int tanggalLahir) throws Exception {
         if (tanggalLahir > 0) {
             if (tanggalLahir <= 31) {
@@ -116,24 +182,25 @@ public class Pasien {
         } else {
             throw new Exception("Tanggal lahir yang anda masukkan tidak valid");
         }
-        /*
-        Dalam method ini kita mengatur(set)tanggal lahir dokter.
-        jika tanggal lahir yang diinputkan lebih besar dari 0 maka akan masuk kedalam if. kemudian dicek
-        kembali apakah tanggal lahir kurang dari sama dengan 31. jika true maka akan masuk kedalam if dan jika tidak
-        masuk kedalam else dan melemparkan exeption
-
-        jika tanggal lahir kurang dari sama dengan 0 maka akan masuk kedalah else dan melemparkan exception.
-        
-         */
     }
 
+    /**
+     * mengembalikan nilai variabel bulanLahir
+     *
+     * @return
+     */
     public int getBulanLahir() {
         return bulanLahir;
-        /*
-        dalam method ini kita akan mengembalikan value bulanLahir
-         */
+
     }
 
+    /**
+     * mengset nilai variabel bulanLahir sama dengan nilai parameter bulanLhair
+     * dengan tipe data integer
+     *
+     * @param bulanLahir
+     * @throws Exception
+     */
     public void setBulanLahir(int bulanLahir) throws Exception {
         if (bulanLahir > 0) {
             if (bulanLahir <= 12) {
@@ -144,55 +211,67 @@ public class Pasien {
         } else {
             throw new Exception("Bulan lahir yang anda masukkan tidak valid");
         }
-        /*
-        Dalam method ini kita mengatur(set)bulan lahir dokter.
-        jika tanggal lahir yang diinputkan lebih besar dari 0 maka akan masuk kedalam if. kemudian dicek
-        kembali apakah bulan lahir kurang dari sama dengan 12. jika true maka akan masuk kedalam if dan jika tidak
-        masuk kedalam else dan melemparkan exeption
-
-        jika bulan lahir kurang dari sama dengan 0 maka akan masuk kedalah else dan melemparkan exception.
-        
-         */
     }
 
+    /**
+     * mengembalikan nilai variabel tahunLahir
+     *
+     * @return
+     */
     public int getTahunLahir() {
         return tahunLahir;
-        /*
-        dalam method ini kita akan mengembalikan value tahunLahir
-         */
+
     }
 
+    /**
+     * mengset nilai tahunLahir sama dengan nilai parameter tahunLahir dengan
+     * tipe data integer
+     *
+     * @param tahunLahir
+     * @throws Exception
+     */
     public void setTahunLahir(int tahunLahir) throws Exception {
         if (tahunLahir > 0) {
             this.tahunLahir = tahunLahir;
         } else {
             throw new Exception("Tahun lahir yang anda masukkan tidak valid");
         }
-        /*
-        Dalam method ini kita mengatur(set)tahun lahir dokter.
-        jika tahun lahir yang diinputkan lebih besar dari 0 maka akan masuk kedalam if. 
-        jika tanggal lahir kurang dari sama dengan 0 maka akan masuk kedalah else dan melemparkan exception.
-        
-         */
     }
 
+    /**
+     * membuat format tanggal kelahiran dengan objek Date
+     *
+     */
     public void getTanggalKelahiran() {
         Date tanggalKelahiran = new Date(getTahunLahir() - 1900, getBulanLahir() - 1, getTanggalLahir());
         SimpleDateFormat ft = new SimpleDateFormat("dd - MM - yyyy");
         System.out.println(ft.format(tanggalKelahiran));
-        /*
-        method ini digunakan untuk mebuat format tanggal kelahiran dengan objek Date
-         */
     }
 
+    /**
+     * mengembalikan nilai objek daftarPasien dengan tipe ArrayList
+     *
+     * @return
+     */
     public static ArrayList<Pasien> daftarPasienKlinik() {
         return daftarPasien;
     }
 
+    /**
+     * menambahkan objek pasienBaru ke dalam objek daftarPasien
+     *
+     * @param pasienBaru
+     */
     public static void tambahPasienBaru(Pasien pasienBaru) {
         daftarPasien.add(pasienBaru);
     }
 
+    /**
+     * mencari data pasien berdasarakan nomor rekam medis
+     *
+     * @param NoRM
+     * @return
+     */
     public static Pasien cariPasien(String NoRM) {
         Pasien result = null;
         boolean found = false;
@@ -205,6 +284,10 @@ public class Pasien {
         return result;
     }
 
+    /**
+     * method ini membuat kita lebih mudah saat akan menampilkannya di main
+     *
+     */
     public void printInfo() {
         System.out.printf("%-25s", "Nomor Rekam Medis Pasien");
         System.out.println(": " + getNomorRekamMedis());
@@ -216,8 +299,5 @@ public class Pasien {
         System.out.printf("%-25s", "Alamat");
         System.out.println(": " + alamat);
         System.out.println("");
-        /*
-        method ini membuat kita lebih mudah saat akan menampilkannya di main
-         */
     }
 }

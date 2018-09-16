@@ -5,9 +5,7 @@
  */
 package Model;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 
 /**
  *
@@ -64,7 +62,8 @@ public class AntrianPasien {
 
     /**
      * method untuk mendaftar pasien baru di nomor antrian
-     * @param pasien 
+     *
+     * @param pasien
      */
     public void Mendaftar(Pasien pasien) {
         pasienList.add(pasien);
