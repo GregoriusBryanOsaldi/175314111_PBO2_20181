@@ -8,6 +8,8 @@ package View;
 import Model.Pasien;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -155,18 +157,24 @@ public class DaftarPasienBaru extends JFrame implements ActionListener {
         saveButton = new JButton("Simpan");
         saveButton.setBounds(240, 250, 80, 30);
         this.add(saveButton);
+        saveButton.addActionListener(this);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == saveButton) {
-            Pasien daftar = new Pasien();
-            daftar.setNama(namaText.getText());
-            daftar.setAlamat(alamatText.getText());
-            daftar.setTanggalLahir(tanggalButton.getItemCount());
-            Pasien.tambahPasienBaru(daftar);
-            JOptionPane.showMessageDialog(null, namaText.getText() + "\nAnda Terdaftar");
-            this.dispose();
+            try {
+                Pasien daftar = new Pasien();
+                daftar.setNama(namaText.getText());
+                daftar.setAlamat(alamatText.getText());
+                daftar.setNomorRekamMedis(NIKText.getText());
+                Pasien.tambahPasienBaru(daftar);
+                JOptionPane.showMessageDialog(null, namaText.getText() + "\n\tAnda Terdaftar");
+                this.dispose();
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(null, ex);
+            }
+
         }
 
     }

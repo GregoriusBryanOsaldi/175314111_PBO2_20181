@@ -3,18 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Test;
-
-import View.MainFrame;
+package View;
 
 /**
  *
  * @author greg
  */
-public class TestMainFrame {
-    public static void main(String[] args) {
-        MainFrame MF=new MainFrame();
-        MF.setSize(550, 300);
-        MF.setVisible(true);
-    }
+public class CariPasien {
+    
 }

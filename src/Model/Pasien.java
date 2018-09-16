@@ -95,8 +95,14 @@ public class Pasien {
     }
 
     public String getNomorRekamMedis() {
-        nomorRekamMedis = NIK;
         return nomorRekamMedis;
+    }
+
+    public void setNomorRekamMedis(String nomorRekamMedis)throws Exception {
+        if (nomorRekamMedis.length()==16) {
+            this.nomorRekamMedis = NIK;
+        }else
+        throw new Exception("Nomor Rekam Medis terdiri dari 16 karakter ");
     }
 
     public void setTanggalLahir(int tanggalLahir) throws Exception {

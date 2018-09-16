@@ -138,7 +138,7 @@ public class DaftarAntrianDialog extends JDialog implements ActionListener{
         
         //Tombol
         saveButton = new JButton("Simpan");
-        saveButton.setBounds(240, 250, 80, 30);
+        saveButton.setBounds(240, 180, 80, 30);
         this.add(saveButton);
     }
 
