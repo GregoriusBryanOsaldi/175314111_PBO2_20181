@@ -96,15 +96,15 @@ public class DaftarPasienBaru extends JDialog implements ActionListener {
         jenisKelamin.setBounds(20, 140, 100, 15);
         this.add(jenisKelamin);
 
-        lakiLaki = new JRadioButton("Laki-Laki", true);
+        lakiLaki = new JRadioButton("Laki-Laki");
         lakiLaki.setBounds(150, 140, 100, 20);
         this.add(lakiLaki);
 
-        perempuan = new JRadioButton("Perempuan", false);
+        perempuan = new JRadioButton("Perempuan");
         perempuan.setBounds(150, 170, 100, 20);
         this.add(perempuan);
-        
-        ButtonGroup kelamin=new ButtonGroup();
+
+        ButtonGroup kelamin = new ButtonGroup();
         kelamin.add(lakiLaki);
         kelamin.add(perempuan);
 
@@ -115,7 +115,7 @@ public class DaftarPasienBaru extends JDialog implements ActionListener {
         this.add(tanggalLahir);
 
         //Tombol Tanggal Lahir
-        String[] tanggal = {"Pilih", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10",
+        String[] tanggal = {"Tanggal", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10",
             "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24",
             "25", "26", "27", "28", "29", "30", "31"};
         tanggalButton = new JComboBox(tanggal);
@@ -129,7 +129,7 @@ public class DaftarPasienBaru extends JDialog implements ActionListener {
         this.add(bulanLahir);
 
         //Tombol Bulan Lahir
-        String[] bulan = {"Pilih", "Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli",
+        String[] bulan = {"Bulan", "Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli",
             "Agustus", "September", "Oktober", "November", "Desember"};
         bulanButton = new JComboBox(bulan);
         bulanButton.setBounds(255, 200, 100, 20);
@@ -142,7 +142,7 @@ public class DaftarPasienBaru extends JDialog implements ActionListener {
         this.add(tahunLahir);
 
         //Tombol Tahun Lahir
-        String[] tahun = {"Pilih", "1900", "1901", "1902", "1903", "1904", "1905", "1906", "1907", "1908",
+        String[] tahun = {"Tahun", "1900", "1901", "1902", "1903", "1904", "1905", "1906", "1907", "1908",
             "1909", "1910", "1911", "1912", "1913", "1914", "1915", "1916", "1917", "1918",
             "1919", "1920", "1921", "1922", "1923", "1924", "1925", "1926", "1927", "1928",
             "1929", "1930", "1931", "1932", "1933", "1934", "1935", "1936", "1937", "1938",
@@ -177,7 +177,7 @@ public class DaftarPasienBaru extends JDialog implements ActionListener {
                 JOptionPane.showMessageDialog(null, "Data Anda Telah Terdaftar");
                 this.dispose();
             } catch (Exception ex) {
-      JOptionPane.showMessageDialog(null, ex);
+                JOptionPane.showMessageDialog(null, ex);
             }
 
         }
