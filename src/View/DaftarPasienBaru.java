@@ -8,12 +8,9 @@ package View;
 import Model.Pasien;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.ComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
-import javax.swing.JFrame;
+import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
@@ -23,7 +20,7 @@ import javax.swing.JTextField;
  *
  * @author admin
  */
-public class DaftarPasienBaru extends JFrame implements ActionListener {
+public class DaftarPasienBaru extends JDialog implements ActionListener {
 
     private JLabel judul;
     private JLabel NIK;
@@ -163,17 +160,13 @@ public class DaftarPasienBaru extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == saveButton) {
-            try {
                 Pasien daftar = new Pasien();
                 daftar.setNama(namaText.getText());
                 daftar.setAlamat(alamatText.getText());
-                daftar.setNomorRekamMedis(NIKText.getText());
+                daftar.setNIK(NIKText.getText());
                 Pasien.tambahPasienBaru(daftar);
-                JOptionPane.showMessageDialog(null, namaText.getText() + "\n\tAnda Terdaftar");
+                JOptionPane.showMessageDialog(null, "Data Anda Telah Terdaftar");
                 this.dispose();
-            } catch (Exception ex) {
-                JOptionPane.showMessageDialog(null, ex);
-            }
 
         }
 

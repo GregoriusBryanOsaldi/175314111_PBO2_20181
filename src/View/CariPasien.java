@@ -50,11 +50,15 @@ public class CariPasien extends JFrame implements ActionListener {
         cariButton.setBounds(380, 50, 60, 20);
         this.add(cariButton);
         
+        cariButton.addActionListener(this);
+        
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (e.getSource()==cariButton) {
+            
+        }
     }
 
 }

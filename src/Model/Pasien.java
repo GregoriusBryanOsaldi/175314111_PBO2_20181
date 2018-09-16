@@ -86,12 +86,12 @@ public class Pasien {
         return NIK;
     }
 
-    public void setNIK(String NIK) throws Exception {
-        if (NIK.length() == 16) {
+    public void setNIK(String NIK)  {
+//        if (NIK.length() == 16) {
             this.NIK = NIK;
-        } else {
-            throw new Exception("Nomor Induk Kependudukan terdiri dari 16 karakter");
-        }
+//        } else {
+//            throw new Exception("Nomor Induk Kependudukan terdiri dari 16 karakter");
+//        }
     }
 
     public String getNomorRekamMedis() {
@@ -99,10 +99,10 @@ public class Pasien {
     }
 
     public void setNomorRekamMedis(String nomorRekamMedis)throws Exception {
-        if (nomorRekamMedis.length()==16) {
+//        if (nomorRekamMedis.length()==16) {
             this.nomorRekamMedis = NIK;
-        }else
-        throw new Exception("Nomor Rekam Medis terdiri dari 16 karakter ");
+//        }else
+//        throw new Exception("Nomor Rekam Medis terdiri dari 16 karakter ");
     }
 
     public void setTanggalLahir(int tanggalLahir) throws Exception {

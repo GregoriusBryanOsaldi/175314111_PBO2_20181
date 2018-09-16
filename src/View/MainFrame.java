@@ -85,14 +85,12 @@ public class MainFrame extends JFrame implements ActionListener {
             pasienBaru.setTitle("Daftar Pasien Baru");
             pasienBaru.setSize(550, 350);
             pasienBaru.setVisible(true);
-            pasienBaru.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         }
         if (e.getSource() == tambahAntrian) {
             DaftarAntrianDialog antrianDialog = new DaftarAntrianDialog();
             antrianDialog.setTitle("Daftar Antrian Pasien");
-            antrianDialog.setSize(550, 250);
+            antrianDialog.setSize(550, 350);
             antrianDialog.setVisible(true);
-            antrianDialog.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         }
         if (e.getSource() == exitMenuItem) {
             System.exit(0);

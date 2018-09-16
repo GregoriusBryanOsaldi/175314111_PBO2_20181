@@ -5,20 +5,21 @@
  */
 package View;
 
-import Model.Klinik;
+import Model.Pasien;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 /**
  *
  * @author admin
  */
-public class DaftarAntrianDialog extends JDialog implements ActionListener{
+public final class DaftarAntrianDialog extends JDialog implements ActionListener {
 
     private JLabel judullabel;
     private JLabel noRM;
@@ -27,12 +28,14 @@ public class DaftarAntrianDialog extends JDialog implements ActionListener{
     private JLabel tanggalLahir;
     private JLabel bulanLahir;
     private JLabel tahunLahir;
+    private JLabel klinik;
     private JTextField namaText;
     private JTextField noRMText;
     private JTextField alamatText;
     private JComboBox tanggalButton;
     private JComboBox bulanButton;
     private JComboBox tahunButton;
+    private JComboBox klinikButton;
 
     private JButton saveButton;
 
@@ -49,7 +52,7 @@ public class DaftarAntrianDialog extends JDialog implements ActionListener{
         //judul 
         this.setLayout(null);
         judullabel = new JLabel("TAMBAH ANTRIAN");
-        judullabel.setBounds(250, 15, 150, 10);
+        judullabel.setBounds(230, 15, 150, 10);
         this.add(judullabel);
 
         //no RM
@@ -62,6 +65,8 @@ public class DaftarAntrianDialog extends JDialog implements ActionListener{
         noRMText.setBounds(150, 50, 350, 20);
         this.add(noRMText);
 
+        noRMText.addActionListener(this);
+
         //nama
         this.setLayout(null);
         nama = new JLabel("Nama");
@@ -72,6 +77,8 @@ public class DaftarAntrianDialog extends JDialog implements ActionListener{
         namaText.setBounds(150, 80, 350, 20);
         this.add(namaText);
 
+        namaText.addActionListener(this);
+
         //Alamat
         this.setLayout(null);
         alamat = new JLabel("Alamat");
@@ -81,6 +88,8 @@ public class DaftarAntrianDialog extends JDialog implements ActionListener{
         alamatText = new JTextField(100);
         alamatText.setBounds(150, 110, 350, 20);
         this.add(alamatText);
+
+        alamatText.addActionListener(this);
 
         //tanggal lahir
         this.setLayout(null);
@@ -95,6 +104,7 @@ public class DaftarAntrianDialog extends JDialog implements ActionListener{
         tanggalButton = new JComboBox(tanggal);
         tanggalButton.setBounds(150, 140, 60, 20);
         this.add(tanggalButton);
+        tanggalButton.addActionListener(this);
 
         //Bulan Lahir
         this.setLayout(null);
@@ -108,6 +118,7 @@ public class DaftarAntrianDialog extends JDialog implements ActionListener{
         bulanButton = new JComboBox(bulan);
         bulanButton.setBounds(255, 140, 100, 20);
         this.add(bulanButton);
+        bulanButton.addActionListener(this);
 
         //Tahun Lahir
         this.setLayout(null);
@@ -131,20 +142,48 @@ public class DaftarAntrianDialog extends JDialog implements ActionListener{
         tahunButton = new JComboBox(tahun);
         tahunButton.setBounds(400, 140, 100, 20);
         this.add(tahunButton);
-        
+        tahunButton.addActionListener(this);
+
         //klinik
-        Klinik klinik=new Klinik();
-        klinik.getIdKlinik();
-        
+        this.setLayout(null);
+        klinik = new JLabel("Klinik");
+        klinik.setBounds(20, 170, 50, 15);
+        this.add(klinik);
+
+        String[] klinik = {"Pilih", "Penyakit Dalam", "Radiologi", "Mata", "Kulit", "Bedah", "THT", "Gigi"};
+        klinikButton = new JComboBox(klinik);
+        klinikButton.setBounds(150, 170, 150, 20);
+        this.add(klinikButton);
+        klinikButton.addActionListener(this);
+
         //Tombol
         saveButton = new JButton("Simpan");
-        saveButton.setBounds(240, 180, 80, 30);
+        saveButton.setBounds(240, 210, 80, 30);
         this.add(saveButton);
+        saveButton.addActionListener(this);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-
+        if (e.getSource() == noRMText) {
+            Pasien test = Pasien.cariPasien(noRMText.getText());
+            if (test == null) {
+                JOptionPane.showMessageDialog(null, "Data Pasien " + noRMText.getText() + " Pasien Tidak Terdaftar");
+            } else {
+                namaText.setText(test.getNama());
+                alamatText.setText(test.getAlamat());
+            }
+        }
+        if (e.getSource() == saveButton) {
+            Pasien test = Pasien.cariPasien(noRMText.getText());
+            for (int i = 0; i < Pasien.daftarPasien.size(); i++) {
+                int j = i + 1;
+                if (test == Pasien.daftarPasien.get(i)) {
+                    JOptionPane.showMessageDialog(null, "Nomor Antrian Anda : " + j);
+                    this.dispose();
+                }
+            }
+        }
     }
 
 }
