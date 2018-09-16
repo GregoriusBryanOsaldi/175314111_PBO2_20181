@@ -6,10 +6,12 @@
 package View;
 
 import Model.Pasien;
+import java.awt.Button;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
@@ -101,6 +103,10 @@ public class DaftarPasienBaru extends JDialog implements ActionListener {
         perempuan = new JRadioButton("Perempuan", false);
         perempuan.setBounds(150, 170, 100, 20);
         this.add(perempuan);
+        
+        ButtonGroup kelamin=new ButtonGroup();
+        kelamin.add(lakiLaki);
+        kelamin.add(perempuan);
 
         //Tanggal Lahir
         this.setLayout(null);
@@ -153,7 +159,7 @@ public class DaftarPasienBaru extends JDialog implements ActionListener {
         this.add(tahunButton);
 
         //Tombol Simpan
-        saveButton = new JButton("Simpan");
+        saveButton = new JButton("SIMPAN");
         saveButton.setBounds(240, 250, 80, 30);
         this.add(saveButton);
         saveButton.addActionListener(this);

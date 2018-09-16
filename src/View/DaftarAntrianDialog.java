@@ -36,8 +36,7 @@ public final class DaftarAntrianDialog extends JDialog implements ActionListener
     private JComboBox bulanButton;
     private JComboBox tahunButton;
     private JComboBox klinikButton;
-
-    private JButton saveButton;
+    private JButton daftarButton;
 
     public DaftarAntrianDialog() {
         init();
@@ -157,10 +156,10 @@ public final class DaftarAntrianDialog extends JDialog implements ActionListener
         klinikButton.addActionListener(this);
 
         //Tombol
-        saveButton = new JButton("Simpan");
-        saveButton.setBounds(240, 210, 80, 30);
-        this.add(saveButton);
-        saveButton.addActionListener(this);
+        daftarButton = new JButton("DAFTAR");
+        daftarButton.setBounds(240, 210, 80, 30);
+        this.add(daftarButton);
+        daftarButton.addActionListener(this);
     }
 
     @Override
@@ -174,7 +173,7 @@ public final class DaftarAntrianDialog extends JDialog implements ActionListener
                 alamatText.setText(test.getAlamat());
             }
         }
-        if (e.getSource() == saveButton) {
+        if (e.getSource() == daftarButton) {
             Pasien test = Pasien.cariPasien(noRMText.getText());
             for (int i = 0; i < Pasien.daftarPasien.size(); i++) {
                 int j = i + 1;

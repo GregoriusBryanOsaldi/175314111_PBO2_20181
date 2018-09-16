@@ -44,13 +44,13 @@ public class MainFrame extends JFrame implements ActionListener {
         //main frame label
         this.setLayout(null);
         mainFrameLabel = new JLabel("Selamat Datang Selamat Berobat");
-        mainFrameLabel.setBounds(110, 80, 500, 50);
+        mainFrameLabel.setBounds(80, 80, 500, 50);
         mainFrameLabel.setFont(new Font("Arial", Font.PLAIN, 25));
         this.add(mainFrameLabel);
 
         this.setLayout(null);
         mainFrame2Label = new JLabel("Silahkan Daftarkan Data Diri Anda");
-        mainFrame2Label.setBounds(110, 110, 500, 50);
+        mainFrame2Label.setBounds(80, 110, 500, 50);
         mainFrame2Label.setFont(new Font("Arial", Font.PLAIN, 25));
         this.add(mainFrame2Label);
 
