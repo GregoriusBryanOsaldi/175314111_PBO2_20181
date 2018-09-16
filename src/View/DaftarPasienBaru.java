@@ -8,6 +8,8 @@ package View;
 import Model.Pasien;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
@@ -160,6 +162,7 @@ public class DaftarPasienBaru extends JDialog implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == saveButton) {
+            try {
                 Pasien daftar = new Pasien();
                 daftar.setNama(namaText.getText());
                 daftar.setAlamat(alamatText.getText());
@@ -167,6 +170,9 @@ public class DaftarPasienBaru extends JDialog implements ActionListener {
                 Pasien.tambahPasienBaru(daftar);
                 JOptionPane.showMessageDialog(null, "Data Anda Telah Terdaftar");
                 this.dispose();
+            } catch (Exception ex) {
+      JOptionPane.showMessageDialog(null, ex);
+            }
 
         }
 
