@@ -25,7 +25,7 @@ import javax.swing.JTextField;
  */
 public class DaftarPasienBaru extends JFrame implements ActionListener {
 
-    private JLabel judullabel;
+    private JLabel judul;
     private JLabel NIK;
     private JLabel tanggalLahir;
     private JLabel bulanLahir;
@@ -55,9 +55,9 @@ public class DaftarPasienBaru extends JFrame implements ActionListener {
     public void init() {
         //judul 
         this.setLayout(null);
-        judullabel = new JLabel("PASIEN BARU");
-        judullabel.setBounds(250, 15, 150, 10);
-        this.add(judullabel);
+        judul = new JLabel("PASIEN BARU");
+        judul.setBounds(250, 15, 150, 10);
+        this.add(judul);
 
         //NIK
         this.setLayout(null);

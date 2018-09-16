@@ -45,13 +45,13 @@ public class MainFrame extends JFrame implements ActionListener {
         this.setLayout(null);
         mainFrameLabel = new JLabel("Selamat Datang Selamat Berobat");
         mainFrameLabel.setBounds(110, 80, 500, 50);
-        mainFrameLabel.setFont(new Font("Arial", Font.PLAIN, 20));
+        mainFrameLabel.setFont(new Font("Arial", Font.PLAIN, 25));
         this.add(mainFrameLabel);
 
         this.setLayout(null);
         mainFrame2Label = new JLabel("Silahkan Daftarkan Data Diri Anda");
         mainFrame2Label.setBounds(110, 110, 500, 50);
-        mainFrame2Label.setFont(new Font("Arial", Font.PLAIN, 20));
+        mainFrame2Label.setFont(new Font("Arial", Font.PLAIN, 25));
         this.add(mainFrame2Label);
 
         //item tambah Pasien
@@ -82,13 +82,17 @@ public class MainFrame extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == tambahPasien) {
             DaftarPasienBaru pasienBaru = new DaftarPasienBaru();
+            pasienBaru.setTitle("Daftar Pasien Baru");
             pasienBaru.setSize(550, 350);
             pasienBaru.setVisible(true);
+            pasienBaru.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         }
         if (e.getSource() == tambahAntrian) {
             DaftarAntrianDialog antrianDialog = new DaftarAntrianDialog();
+            antrianDialog.setTitle("Daftar Antrian Pasien");
             antrianDialog.setSize(550, 250);
             antrianDialog.setVisible(true);
+            antrianDialog.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         }
         if (e.getSource() == exitMenuItem) {
             System.exit(0);
