@@ -123,36 +123,24 @@ public final class DaftarAntrianDialog extends JDialog implements ActionListener
         this.add(tanggalLahir);
 
         //Tombol Tanggal Lahir
-        String[] tanggal = {"Pilih", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10",
+        String[] tanggal = {"Tanggal", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10",
             "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24",
             "25", "26", "27", "28", "29", "30", "31"};
         tanggalButton = new JComboBox(tanggal);
-        tanggalButton.setBounds(150, 140, 60, 20);
+        tanggalButton.setBounds(150, 140, 100, 20);
         this.add(tanggalButton);
         tanggalButton.addActionListener(this);
 
-        //Bulan Lahir
-        this.setLayout(null);
-        bulanLahir = new JLabel("Bulan");
-        bulanLahir.setBounds(215, 140, 100, 15);
-        this.add(bulanLahir);
-
         //Tombol Bulan Lahir
-        String[] bulan = {"Pilih", "Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli",
+        String[] bulan = {"Bulan", "Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli",
             "Agustus", "September", "Oktober", "November", "Desember"};
         bulanButton = new JComboBox(bulan);
-        bulanButton.setBounds(255, 140, 100, 20);
+        bulanButton.setBounds(275, 140, 100, 20);
         this.add(bulanButton);
         bulanButton.addActionListener(this);
 
-        //Tahun Lahir
-        this.setLayout(null);
-        tahunLahir = new JLabel("Tahun");
-        tahunLahir.setBounds(360, 140, 100, 15);
-        this.add(tahunLahir);
-
         //Tombol Tahun Lahir
-        String[] tahun = {"Pilih", "1900", "1901", "1902", "1903", "1904", "1905", "1906", "1907", "1908",
+        String[] tahun = {"Tahun", "1900", "1901", "1902", "1903", "1904", "1905", "1906", "1907", "1908",
             "1909", "1910", "1911", "1912", "1913", "1914", "1915", "1916", "1917", "1918",
             "1919", "1920", "1921", "1922", "1923", "1924", "1925", "1926", "1927", "1928",
             "1929", "1930", "1931", "1932", "1933", "1934", "1935", "1936", "1937", "1938",
@@ -205,7 +193,6 @@ public final class DaftarAntrianDialog extends JDialog implements ActionListener
                 int j = i + 1;
                 if (test == Pasien.daftarPasien.get(i)) {
                     JOptionPane.showMessageDialog(null, "Nomor Antrian Anda : " + j);
-                    this.dispose();
                 }
             }
         }
