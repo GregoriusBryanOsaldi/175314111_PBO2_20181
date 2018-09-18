@@ -24,13 +24,11 @@ import javax.swing.JTextField;
  *
  * @author admin
  */
-public class DaftarPasienBaru extends JDialog implements ActionListener {
+public class DaftarPasienBaru extends JDialog {
 
     private JLabel judul;
     private JLabel NIK;
     private JLabel tanggalLahir;
-    private JLabel bulanLahir;
-    private JLabel tahunLahir;
     private JLabel namaLabel;
     private JLabel alamat;
     private JLabel jenisKelamin;
@@ -119,27 +117,15 @@ public class DaftarPasienBaru extends JDialog implements ActionListener {
             "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24",
             "25", "26", "27", "28", "29", "30", "31"};
         tanggalButton = new JComboBox(tanggal);
-        tanggalButton.setBounds(150, 200, 60, 20);
+        tanggalButton.setBounds(150, 200, 100, 20);
         this.add(tanggalButton);
-
-        //Bulan Lahir
-        this.setLayout(null);
-        bulanLahir = new JLabel("Bulan");
-        bulanLahir.setBounds(215, 200, 100, 15);
-        this.add(bulanLahir);
 
         //Tombol Bulan Lahir
         String[] bulan = {"Bulan", "Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli",
             "Agustus", "September", "Oktober", "November", "Desember"};
         bulanButton = new JComboBox(bulan);
-        bulanButton.setBounds(255, 200, 100, 20);
+        bulanButton.setBounds(275, 200, 100, 20);
         this.add(bulanButton);
-
-        //Tahun Lahir
-        this.setLayout(null);
-        tahunLahir = new JLabel("Tahun");
-        tahunLahir.setBounds(360, 200, 100, 15);
-        this.add(tahunLahir);
 
         //Tombol Tahun Lahir
         String[] tahun = {"Tahun", "1900", "1901", "1902", "1903", "1904", "1905", "1906", "1907", "1908",
@@ -162,26 +148,20 @@ public class DaftarPasienBaru extends JDialog implements ActionListener {
         saveButton = new JButton("SIMPAN");
         saveButton.setBounds(240, 250, 80, 30);
         this.add(saveButton);
-        saveButton.addActionListener(this);
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == saveButton) {
-            try {
-                Pasien daftar = new Pasien();
-                daftar.setNama(namaText.getText());
-                daftar.setAlamat(alamatText.getText());
-                daftar.setNIK(NIKText.getText());
-                Pasien.tambahPasienBaru(daftar);
-                JOptionPane.showMessageDialog(null, "Data Anda Telah Terdaftar");
-                this.dispose();
-            } catch (Exception ex) {
-                JOptionPane.showMessageDialog(null, ex);
+        saveButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    Pasien daftar = new Pasien();
+                    daftar.setNama(namaText.getText());
+                    daftar.setAlamat(alamatText.getText());
+                    daftar.setNIK(NIKText.getText());
+                    Pasien.tambahPasienBaru(daftar);
+                    JOptionPane.showMessageDialog(null, "Data Anda Telah Terdaftar");
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(null, ex);
+                }
             }
-
-        }
-
+        });
     }
-
 }
