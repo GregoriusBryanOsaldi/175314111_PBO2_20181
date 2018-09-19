@@ -156,9 +156,9 @@ public class DaftarPasienBaru extends JDialog {
                     daftar.setNama(namaText.getText());
                     daftar.setAlamat(alamatText.getText());
                     daftar.setNIK(NIKText.getText());
-                    daftar.setTanggalLahir(tanggalButton.getSelectedIndex());
-                    daftar.setBulanLahir(bulanButton.getSelectedIndex());
-                    daftar.setTahunLahir(tahunButton.getSelectedIndex());
+                    daftar.setTanggalLahir((int) tanggalButton.getSelectedItem());
+                    daftar.setBulanLahir((int) bulanButton.getSelectedItem());
+                    daftar.setTahunLahir((int) tahunButton.getSelectedItem());
                     Pasien.tambahPasienBaru(daftar);
                     JOptionPane.showMessageDialog(null, "Data Anda Telah Terdaftar");
                 } catch (Exception ex) {

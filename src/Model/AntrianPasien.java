@@ -13,8 +13,34 @@ import java.util.ArrayList;
  */
 public class AntrianPasien {
 
+    private int tanggalAntrian, bulanAntrian, tahunAntrian;
     private Klinik klinik;//mendeklarasikan variabel klinik dengan tipe objek Klinik
-    private ArrayList<Pasien> pasienList = new ArrayList<Pasien>();//mendeklarasikan variabel array pasienList dengan tipe objek ArrayList
+    private ArrayList<Pasien> daftarPasienAntri = new ArrayList<Pasien>();//mendeklarasikan variabel array pasienList dengan tipe objek ArrayList
+    private static ArrayList<AntrianPasien> antrianPasien = new ArrayList<AntrianPasien>();
+
+    public int getTanggalAntrian() {
+        return tanggalAntrian;
+    }
+
+    public void setTanggalAntrian(int tanggalAntrian) {
+        this.tanggalAntrian = tanggalAntrian;
+    }
+
+    public int getBulanAntrian() {
+        return bulanAntrian;
+    }
+
+    public void setBulanAntrian(int bulanAntrian) {
+        this.bulanAntrian = bulanAntrian;
+    }
+
+    public int getTahunAntrian() {
+        return tahunAntrian;
+    }
+
+    public void setTahunAntrian(int tahunAntrian) {
+        this.tahunAntrian = tahunAntrian;
+    }
 
     /**
      * konstruktor untuk mendeklarasikan objek AntrianPasien
@@ -48,7 +74,7 @@ public class AntrianPasien {
      * @return
      */
     public ArrayList<Pasien> getPasien() {
-        return pasienList;
+        return daftarPasienAntri;
     }
 
     /**
@@ -57,7 +83,7 @@ public class AntrianPasien {
      * @param pasien
      */
     public void setPasien(ArrayList<Pasien> pasien) {
-        this.pasienList = pasien;
+        this.daftarPasienAntri = pasien;
     }
 
     /**
@@ -66,7 +92,33 @@ public class AntrianPasien {
      * @param pasien
      */
     public void Mendaftar(Pasien pasien) {
-        pasienList.add(pasien);
+        daftarPasienAntri.add(pasien);
+    }
+
+    public static AntrianPasien cariPasien(String noRM) {
+        for (int i = 0; i < antrianPasien.size(); i++) {
+            if (antrianPasien.get(i).daftarPasienAntri.equals(noRM)) {
+                return antrianPasien.get(i);
+            }
+        }
+        return null;
+    }
+
+    public static Pasien cariPasien(String noRM, int tanggal, int bulan, int tahun) {
+        for (int i = 0; i < antrianPasien.size(); i++) {
+            for (int j = 0; j < antrianPasien.get(i).daftarPasienAntri.size(); j++) {
+                if (antrianPasien.get(i).daftarPasienAntri.get(j).getNIK().equals(noRM)) {
+                    if (antrianPasien.get(i).daftarPasienAntri.get(j).getTanggalLahir() == tanggal) {
+                        if (antrianPasien.get(i).daftarPasienAntri.get(j).getBulanLahir() == bulan) {
+                            if (antrianPasien.get(i).daftarPasienAntri.get(j).getTahunLahir() == tahun) {
+                                return antrianPasien.get(i).daftarPasienAntri.get(j);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        return null;
     }
 
     /**
@@ -76,8 +128,8 @@ public class AntrianPasien {
         System.out.println("");
         System.out.printf("%-20s", "");
         System.out.println("Daftar Antrian Pasien" + "\n");
-        for (int i = 0; i < pasienList.size(); i++) {
-            pasienList.get(i).printInfo(); //mengeprint data pasien setiap index
+        for (int i = 0; i < daftarPasienAntri.size(); i++) {
+            daftarPasienAntri.get(i).printInfo(); //mengeprint data pasien setiap index
         }
     }
 }

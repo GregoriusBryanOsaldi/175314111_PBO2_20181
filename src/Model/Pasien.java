@@ -273,15 +273,12 @@ public class Pasien {
      * @return
      */
     public static Pasien cariPasien(String NoRM) {
-        Pasien result = null;
-        boolean found = false;
-        for (int i = 0; i < daftarPasien.size() && found == false; i++) {
+        for (int i = 0; i < daftarPasien.size(); i++) {
             if (daftarPasien.get(i).NIK.equals(NoRM)) {
-                found = true;
-                result = daftarPasien.get(i);
+                return daftarPasien.get(i);
             }
         }
-        return result;
+        return null;
     }
 
     /**

@@ -27,8 +27,7 @@ public final class DaftarAntrianDialog extends JDialog implements ActionListener
     private JLabel nama;
     private JLabel alamat;
     private JLabel tanggalLahir;
-    private JLabel bulanLahir;
-    private JLabel tahunLahir;
+  
     private JLabel klinik;
     private JTextField namaText;
     private JTextField noRMText;
@@ -175,6 +174,7 @@ public final class DaftarAntrianDialog extends JDialog implements ActionListener
         daftarButton.setBounds(240, 210, 80, 30);
         this.add(daftarButton);
         daftarButton.addActionListener(new ActionListener() {
+            
             @Override
             public void actionPerformed(ActionEvent e) {
                 Pasien test = Pasien.cariPasien(noRMText.getText());
@@ -197,6 +197,7 @@ public final class DaftarAntrianDialog extends JDialog implements ActionListener
             } else {
                 namaText.setText(test.getNama());
                 alamatText.setText(test.getAlamat());
+                tanggalButton.setSelectedIndex((int)test.getTanggalLahir());
             }
         }
     }
