@@ -201,5 +201,4 @@ public final class DaftarAntrianDialog extends JDialog implements ActionListener
             }
         }
     }
-
 }
