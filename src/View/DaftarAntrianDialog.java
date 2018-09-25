@@ -188,10 +188,12 @@ public final class DaftarAntrianDialog extends JDialog implements ActionListener
                             pasien.setNama(namaText.getText());
                             pasien.setAlamat(alamatText.getText());
                             pasien.setNomorRekamMedis(noRMText.getText());
-                            int tanggal= Integer.valueOf(tanggalButton.getSelectedItem().toString());
+                            int tanggal = Integer.valueOf(tanggalButton.getSelectedItem().toString());
+                            int bulan = Integer.valueOf(bulanButton.getSelectedItem().toString());
+                            int tahun = Integer.valueOf(tahunButton.getSelectedItem().toString());
                             pasien.setTanggalLahir(tanggal);
-                            pasien.setBulanLahir((int) bulanButton.getSelectedItem());
-                            pasien.setTahunLahir((int) tahunButton.getSelectedItem());
+                            pasien.setBulanLahir(bulan);
+                            pasien.setTahunLahir(tahun);
                             antrian.Mendaftar(pasien);
                             JOptionPane.showMessageDialog(null, "Nomor Antrian Anda : " + (i + 1));
                         } catch (Exception ex) {
