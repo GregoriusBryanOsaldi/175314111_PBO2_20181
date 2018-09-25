@@ -5,20 +5,12 @@
  */
 package View;
 
-import Model.Pasien;
+import Model.*;
 import java.awt.Button;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.ButtonGroup;
-import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.JDialog;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JRadioButton;
-import javax.swing.JTextField;
+import javax.swing.*;
 
 /**
  *
@@ -31,6 +23,7 @@ public class DaftarPasienBaru extends JDialog {
     private JLabel tanggalLahir;
     private JLabel namaLabel;
     private JLabel alamat;
+    private JLabel klinik;
     private JLabel jenisKelamin;
     private JTextField namaText;
     private JTextField alamatText;
@@ -41,6 +34,7 @@ public class DaftarPasienBaru extends JDialog {
     private JComboBox tanggalButton;
     private JComboBox bulanButton;
     private JComboBox tahunButton;
+    private JComboBox klinikButton;
 
     public DaftarPasienBaru() {
         init();
@@ -52,14 +46,14 @@ public class DaftarPasienBaru extends JDialog {
     }
 
     public void init() {
-        //judul 
         this.setLayout(null);
+
+        //judul 
         judul = new JLabel("PASIEN BARU");
         judul.setBounds(250, 15, 150, 10);
         this.add(judul);
 
         //NIK
-        this.setLayout(null);
         NIK = new JLabel("NIK");
         NIK.setBounds(20, 50, 50, 15);
         this.add(NIK);
@@ -69,7 +63,6 @@ public class DaftarPasienBaru extends JDialog {
         this.add(NIKText);
 
         //nama
-        this.setLayout(null);
         namaLabel = new JLabel("Nama");
         namaLabel.setBounds(20, 80, 50, 15);
         this.add(namaLabel);
@@ -79,7 +72,6 @@ public class DaftarPasienBaru extends JDialog {
         this.add(namaText);
 
         //Alamat
-        this.setLayout(null);
         alamat = new JLabel("Alamat");
         alamat.setBounds(20, 110, 50, 15);
         this.add(alamat);
@@ -89,7 +81,6 @@ public class DaftarPasienBaru extends JDialog {
         this.add(alamatText);
 
         //Jenis Kelamin
-        this.setLayout(null);
         jenisKelamin = new JLabel("Jenis Kelamin");
         jenisKelamin.setBounds(20, 140, 100, 15);
         this.add(jenisKelamin);
@@ -107,7 +98,6 @@ public class DaftarPasienBaru extends JDialog {
         kelamin.add(perempuan);
 
         //Tanggal Lahir
-        this.setLayout(null);
         tanggalLahir = new JLabel("Tanggal Lahir");
         tanggalLahir.setBounds(20, 200, 150, 15);
         this.add(tanggalLahir);
@@ -121,8 +111,7 @@ public class DaftarPasienBaru extends JDialog {
         this.add(tanggalButton);
 
         //Tombol Bulan Lahir
-        String[] bulan = {"Bulan", "Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli",
-            "Agustus", "September", "Oktober", "November", "Desember"};
+        String[] bulan = {"Bulan", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"};
         bulanButton = new JComboBox(bulan);
         bulanButton.setBounds(275, 200, 100, 20);
         this.add(bulanButton);
@@ -144,24 +133,39 @@ public class DaftarPasienBaru extends JDialog {
         tahunButton.setBounds(400, 200, 100, 20);
         this.add(tahunButton);
 
+        //Klinik
+        klinik = new JLabel("Klinik");
+        klinik.setBounds(20, 230, 50, 15);
+        this.add(klinik);
+
+        String[] klinik = {"Pilih", "Penyakit Dalam", "Radiologi", "Mata", "Kulit", "Bedah", "THT", "Gigi"};
+        klinikButton = new JComboBox(klinik);
+        klinikButton.setBounds(150, 230, 150, 20);
+        this.add(klinikButton);
+
         //Tombol Simpan
         saveButton = new JButton("SIMPAN");
-        saveButton.setBounds(240, 250, 80, 30);
+        saveButton.setBounds(240, 300, 80, 30);
         this.add(saveButton);
         saveButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
                     Pasien pasien = new Pasien();
+                    Klinik klinik = new Klinik();
                     pasien.setNama(namaText.getText());
                     pasien.setAlamat(alamatText.getText());
                     pasien.setNIK(NIKText.getText());
-                    int tanggal= Integer.valueOf(tanggalButton.getSelectedItem().toString());
+                    int tanggal = Integer.valueOf(tanggalButton.getSelectedItem().toString());
+                    int bulan = Integer.valueOf(bulanButton.getSelectedItem().toString());
+                    int tahun = Integer.valueOf(tahunButton.getSelectedItem().toString());
                     pasien.setTanggalLahir(tanggal);
-//                    pasien.setBulanLahir((int) bulanButton.getSelectedItem());
-//                    pasien.setTahunLahir((int) tahunButton.getSelectedItem());
+                    pasien.setBulanLahir(bulan);
+                    pasien.setTahunLahir(tahun);
+                    String namaKlinik = String.valueOf(klinikButton.getSelectedItem().toString());
+                    klinik.setNama(namaKlinik);
                     Pasien.tambahPasienBaru(pasien);
-                    JOptionPane.showMessageDialog(null, "Data Anda Telah Terdaftar"+tanggal);
+                    JOptionPane.showMessageDialog(null, "Data Anda Telah Terdaftar");
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(null, ex);
                 }

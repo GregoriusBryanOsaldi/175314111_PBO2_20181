@@ -131,8 +131,9 @@ public class Pasien {
      */
     public void setNIK(String NIK) throws Exception {
         if (NIK.length() == 16) {
-            String nik=NIK;
+            String nik = NIK;
             this.setNomorRekamMedis(nik);
+            this.NIK = NIK;
         } else {
             throw new Exception("Nomor Induk Kependudukan terdiri dari 16 karakter");
         }
@@ -282,7 +283,7 @@ public class Pasien {
      */
     public static Pasien cariPasien(String NoRM) {
         for (int i = 0; i < daftarPasien.size(); i++) {
-            if (daftarPasien.get(i).NIK.equals(NoRM)) {
+            if (daftarPasien.get(i).getNIK().equals(NoRM)) {
                 return daftarPasien.get(i);
             }
         }

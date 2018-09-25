@@ -6,6 +6,7 @@
 package Test;
 
 import View.DaftarAntrianDialog;
+import javax.swing.JFrame;
 
 /**
  *
@@ -18,5 +19,6 @@ public class TestDaftarAntrian {
         test.setTitle("Daftar Antrian Pasien");
         test.setSize(550, 300);
         test.setVisible(true);
+        test.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 }

@@ -5,18 +5,11 @@
  */
 package View;
 
-import Model.AntrianPasien;
-import Model.Pasien;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import Model.*;
+import java.awt.event.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.JDialog;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JTextField;
+import javax.swing.*;
 
 /**
  *
@@ -87,7 +80,35 @@ public final class DaftarAntrianDialog extends JDialog implements ActionListener
         //menambah noRMtext ke DaftarAntrianDialog
         this.add(noRMText);
         //noRMText memanggil method addActionListener
-        noRMText.addActionListener(this);
+        noRMText.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (e.getSource() == noRMText) {
+                    Pasien test = Pasien.cariPasien(noRMText.getText());
+                    if (test == null) {
+                        JOptionPane.showMessageDialog(null, "Data Pasien " + noRMText.getText() + " Pasien Tidak Terdaftar");
+                    } else {
+                        try {
+                            Pasien pasien = new Pasien();
+                            Klinik klinik = new Klinik();
+                            namaText.setText(test.getNama());
+                            alamatText.setText(test.getAlamat());
+                            tanggalButton.setSelectedIndex((int) test.getTanggalLahir());
+                            int tanggal = Integer.valueOf(tanggalButton.getSelectedItem().toString());
+                            int bulan = Integer.valueOf(bulanButton.getSelectedItem().toString());
+                            int tahun = Integer.valueOf(tahunButton.getSelectedItem().toString());
+                            pasien.setTanggalLahir(tanggal);
+                            pasien.setBulanLahir(bulan);
+                            pasien.setTahunLahir(tahun);
+                            String namaKlinik = String.valueOf(klinikButton.getSelectedItem().toString());
+                            klinik.setNama(namaKlinik);
+                        } catch (Exception ex) {
+                            JOptionPane.showMessageDialog(null, ex);
+                        }
+                    }
+                }
+            }
+        });
 
         // membuat object nama yang bertipe JLabel dengan text
         nama = new JLabel("Nama");
@@ -134,8 +155,7 @@ public final class DaftarAntrianDialog extends JDialog implements ActionListener
         tanggalButton.addActionListener(this);
 
         //Tombol Bulan Lahir
-        String[] bulan = {"Bulan", "Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli",
-            "Agustus", "September", "Oktober", "November", "Desember"};
+        String[] bulan = {"Bulan", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"};
         bulanButton = new JComboBox(bulan);
         bulanButton.setBounds(275, 140, 100, 20);
         this.add(bulanButton);
@@ -184,6 +204,7 @@ public final class DaftarAntrianDialog extends JDialog implements ActionListener
                     if (test == Pasien.daftarPasien.get(i)) {
                         try {
                             Pasien pasien = new Pasien();
+                            Klinik klinik = new Klinik();
                             AntrianPasien antrian = new AntrianPasien();
                             pasien.setNama(namaText.getText());
                             pasien.setAlamat(alamatText.getText());
@@ -194,6 +215,8 @@ public final class DaftarAntrianDialog extends JDialog implements ActionListener
                             pasien.setTanggalLahir(tanggal);
                             pasien.setBulanLahir(bulan);
                             pasien.setTahunLahir(tahun);
+                            String namaKlinik = String.valueOf(klinikButton.getSelectedItem().toString());
+                            klinik.setNama(namaKlinik);
                             antrian.Mendaftar(pasien);
                             JOptionPane.showMessageDialog(null, "Nomor Antrian Anda : " + (i + 1));
                         } catch (Exception ex) {
@@ -207,15 +230,6 @@ public final class DaftarAntrianDialog extends JDialog implements ActionListener
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == noRMText) {
-            Pasien test = Pasien.cariPasien(noRMText.getText());
-            if (test == null) {
-                JOptionPane.showMessageDialog(null, "Data Pasien " + noRMText.getText() + " Pasien Tidak Terdaftar");
-            } else {
-                namaText.setText(test.getNama());
-                alamatText.setText(test.getAlamat());
-                tanggalButton.setSelectedIndex((int) test.getTanggalLahir());
-            }
-        }
+
     }
 }

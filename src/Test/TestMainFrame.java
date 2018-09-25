@@ -21,3 +21,4 @@ public class TestMainFrame {
         MF.setVisible(true);
     }
 }
+
