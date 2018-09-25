@@ -6,6 +6,7 @@
 package Model;
 
 import java.util.ArrayList;
+import javax.swing.JLabel;
 
 /**
  *
@@ -95,6 +96,14 @@ public class AntrianPasien {
         daftarPasienAntri.add(pasien);
     }
 
+    public static void daftarPasien(Pasien pasien, int tanggal, int bulan, int tahun, Klinik klinik) {
+        if (cariAntrian(tanggal, bulan, tahun, klinik) == -1) {
+            AntrianPasien.antrianPasien.get(cariAntrian(tanggal, bulan, tahun, klinik)).Mendaftar(pasien);
+        } else {
+            
+        }
+    }
+
     public static AntrianPasien cariPasien(String noRM) {
         for (int i = 0; i < antrianPasien.size(); i++) {
             if (antrianPasien.get(i).daftarPasienAntri.equals(noRM)) {
@@ -104,32 +113,32 @@ public class AntrianPasien {
         return null;
     }
 
-    public static Pasien cariPasien(String noRM, int tanggal, int bulan, int tahun) {
+    public static int cariAntrian(int tanggal, int bulan, int tahun, Klinik klinik) {
         for (int i = 0; i < antrianPasien.size(); i++) {
-            for (int j = 0; j < antrianPasien.get(i).daftarPasienAntri.size(); j++) {
-                if (antrianPasien.get(i).daftarPasienAntri.get(j).getNIK().equals(noRM)) {
-                    if (antrianPasien.get(i).daftarPasienAntri.get(j).getTanggalLahir() == tanggal) {
-                        if (antrianPasien.get(i).daftarPasienAntri.get(j).getBulanLahir() == bulan) {
-                            if (antrianPasien.get(i).daftarPasienAntri.get(j).getTahunLahir() == tahun) {
-                                return antrianPasien.get(i).daftarPasienAntri.get(j);
-                            }
+            if (antrianPasien.get(i).getTanggalAntrian() == tanggal) {
+                if (antrianPasien.get(i).getBulanAntrian() == bulan) {
+                    if (antrianPasien.get(i).getTahunAntrian() == tahun) {
+                        if (antrianPasien.get(i).getKlinik().getIdKlinik().equalsIgnoreCase(klinik.getIdKlinik())) {
+                            return i;
                         }
                     }
                 }
             }
         }
-        return null;
+        return -1;
     }
 
-    /**
-     * method ini memudahkan kita untuk menampilkan hasil program
-     */
-    public void printInfo() {
-        System.out.println("");
-        System.out.printf("%-20s", "");
-        System.out.println("Daftar Antrian Pasien" + "\n");
-        for (int i = 0; i < daftarPasienAntri.size(); i++) {
-            daftarPasienAntri.get(i).printInfo(); //mengeprint data pasien setiap index
+    public static void buatAntrian(int tanggal, int bulan, int tahun, Klinik klinik) throws Exception {
+        AntrianPasien antrian = new AntrianPasien();
+        antrian.setTanggalAntrian(tanggal);
+        antrian.setBulanAntrian(bulan);
+        antrian.setTahunAntrian(tahun);
+        antrian.setKlinik(klinik);
+        if (cariAntrian(tanggal, bulan, tahun, klinik) == -1) {
+            antrianPasien.add(antrian);
+        } else {
+            throw new Exception("Data sudah terdaftar");
         }
     }
+
 }

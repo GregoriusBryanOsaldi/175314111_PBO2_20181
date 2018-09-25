@@ -9,6 +9,8 @@ import Model.AntrianPasien;
 import Model.Pasien;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
@@ -27,7 +29,7 @@ public final class DaftarAntrianDialog extends JDialog implements ActionListener
     private JLabel nama;
     private JLabel alamat;
     private JLabel tanggalLahir;
-  
+
     private JLabel klinik;
     private JTextField namaText;
     private JTextField noRMText;
@@ -174,14 +176,27 @@ public final class DaftarAntrianDialog extends JDialog implements ActionListener
         daftarButton.setBounds(240, 210, 80, 30);
         this.add(daftarButton);
         daftarButton.addActionListener(new ActionListener() {
-            
+
             @Override
             public void actionPerformed(ActionEvent e) {
                 Pasien test = Pasien.cariPasien(noRMText.getText());
                 for (int i = 0; i < Pasien.daftarPasien.size(); i++) {
-                    int j = i + 1;
                     if (test == Pasien.daftarPasien.get(i)) {
-                        JOptionPane.showMessageDialog(null, "Nomor Antrian Anda : " + j);
+                        try {
+                            Pasien pasien = new Pasien();
+                            AntrianPasien antrian = new AntrianPasien();
+                            pasien.setNama(namaText.getText());
+                            pasien.setAlamat(alamatText.getText());
+                            pasien.setNomorRekamMedis(noRMText.getText());
+                            int tanggal= Integer.valueOf(tanggalButton.getSelectedItem().toString());
+                            pasien.setTanggalLahir(tanggal);
+                            pasien.setBulanLahir((int) bulanButton.getSelectedItem());
+                            pasien.setTahunLahir((int) tahunButton.getSelectedItem());
+                            antrian.Mendaftar(pasien);
+                            JOptionPane.showMessageDialog(null, "Nomor Antrian Anda : " + (i + 1));
+                        } catch (Exception ex) {
+                            JOptionPane.showMessageDialog(null, ex);
+                        }
                     }
                 }
             }
@@ -197,7 +212,7 @@ public final class DaftarAntrianDialog extends JDialog implements ActionListener
             } else {
                 namaText.setText(test.getNama());
                 alamatText.setText(test.getAlamat());
-                tanggalButton.setSelectedIndex((int)test.getTanggalLahir());
+                tanggalButton.setSelectedIndex((int) test.getTanggalLahir());
             }
         }
     }

@@ -152,15 +152,16 @@ public class DaftarPasienBaru extends JDialog {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    Pasien daftar = new Pasien();
-                    daftar.setNama(namaText.getText());
-                    daftar.setAlamat(alamatText.getText());
-                    daftar.setNIK(NIKText.getText());
-                    daftar.setTanggalLahir((int) tanggalButton.getSelectedItem());
-                    daftar.setBulanLahir((int) bulanButton.getSelectedItem());
-                    daftar.setTahunLahir((int) tahunButton.getSelectedItem());
-                    Pasien.tambahPasienBaru(daftar);
-                    JOptionPane.showMessageDialog(null, "Data Anda Telah Terdaftar");
+                    Pasien pasien = new Pasien();
+                    pasien.setNama(namaText.getText());
+                    pasien.setAlamat(alamatText.getText());
+                    pasien.setNIK(NIKText.getText());
+                    int tanggal= Integer.valueOf(tanggalButton.getSelectedItem().toString());
+                    pasien.setTanggalLahir(tanggal);
+//                    pasien.setBulanLahir((int) bulanButton.getSelectedItem());
+//                    pasien.setTahunLahir((int) tahunButton.getSelectedItem());
+                    Pasien.tambahPasienBaru(pasien);
+                    JOptionPane.showMessageDialog(null, "Data Anda Telah Terdaftar"+tanggal);
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(null, ex);
                 }

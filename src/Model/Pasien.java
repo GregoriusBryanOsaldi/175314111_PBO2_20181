@@ -19,6 +19,7 @@ public class Pasien {
     private String nomorRekamMedis, NIK;
     private int tanggalLahir, bulanLahir, tahunLahir;
     public static ArrayList<Pasien> daftarPasien = new ArrayList<Pasien>();
+    private String noRM;
 
     /**
      * konstruktor untuk mendeklarasikan kelas Pasien
@@ -45,6 +46,14 @@ public class Pasien {
         this.tanggalLahir = tanggalLahir;
         this.bulanLahir = bulanLahir;
         this.tahunLahir = tahunLahir;
+    }
+
+    public Pasien(String nama, int tanggalLahir, int bulanLahir, int tahunLahir, String noRM) {
+        this.nama = nama;
+        this.tanggalLahir = tanggalLahir;
+        this.bulanLahir = bulanLahir;
+        this.tahunLahir = tahunLahir;
+        this.noRM = noRM;
     }
 
     /**
