@@ -5,6 +5,8 @@
  */
 package Model;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author admin
@@ -13,6 +15,7 @@ public class Klinik {
 
     private String idKlinik;
     private String nama;
+    private static ArrayList<Klinik> klinik = new ArrayList<Klinik>();
 
     /**
      * konstruktor untuk mendeklarasikan kelas Klinik
@@ -24,6 +27,10 @@ public class Klinik {
     public Klinik(String idKlinik, String nama) {
         this.idKlinik = idKlinik;
         this.nama = nama;
+    }
+
+    public static void mendaftarKlinik(Klinik klinikOther) {
+        klinik.add(klinikOther);
     }
 
     /**

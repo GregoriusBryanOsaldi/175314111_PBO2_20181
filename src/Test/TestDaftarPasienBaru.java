@@ -6,7 +6,7 @@
 package Test;
 
 import View.DaftarPasienBaru;
-import javax.swing.JFrame;
+
 
 /**
  *

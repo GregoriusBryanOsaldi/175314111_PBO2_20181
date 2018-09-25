@@ -16,7 +16,7 @@ import javax.swing.*;
  *
  * @author admin
  */
-public class DaftarPasienBaru extends JDialog {
+public class DaftarPasienBaru extends JDialog implements ActionListener {
 
     private JLabel judul;
     private JLabel NIK;
@@ -144,32 +144,36 @@ public class DaftarPasienBaru extends JDialog {
         this.add(klinikButton);
 
         //Tombol Simpan
-        saveButton = new JButton("SIMPAN");
+        saveButton = new JButton("DAFTAR");
         saveButton.setBounds(240, 270, 80, 30);
         this.add(saveButton);
-        saveButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                try {
-                    Pasien pasien = new Pasien();
-                    Klinik klinik = new Klinik();
-                    pasien.setNama(namaText.getText());
-                    pasien.setAlamat(alamatText.getText());
-                    pasien.setNIK(NIKText.getText());
-                    int tanggal = Integer.valueOf(tanggalButton.getSelectedItem().toString());
-                    int bulan = Integer.valueOf(bulanButton.getSelectedItem().toString());
-                    int tahun = Integer.valueOf(tahunButton.getSelectedItem().toString());
-                    pasien.setTanggalLahir(tanggal);
-                    pasien.setBulanLahir(bulan);
-                    pasien.setTahunLahir(tahun);
-                    String namaKlinik = String.valueOf(klinikButton.getSelectedItem().toString());
-                    klinik.setNama(namaKlinik);
-                    Pasien.tambahPasienBaru(pasien);
-                    JOptionPane.showMessageDialog(null, "Data Anda Telah Terdaftar"+bulan);
-                } catch (Exception ex) {
-                    JOptionPane.showMessageDialog(null, ex);
-                }
+        saveButton.addActionListener(this);
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == saveButton) {
+            try {
+                Pasien pasien = new Pasien();
+                Klinik klinik = new Klinik();
+                pasien.setNama(namaText.getText());
+                pasien.setAlamat(alamatText.getText());
+                pasien.setNIK(NIKText.getText());
+                int tanggal = Integer.valueOf(tanggalButton.getSelectedItem().toString());
+                int bulan = Integer.valueOf(bulanButton.getSelectedItem().toString());
+                int tahun = Integer.valueOf(tahunButton.getSelectedItem().toString());
+                pasien.setTanggalLahir(tanggal);
+                pasien.setBulanLahir(bulan);
+                pasien.setTahunLahir(tahun);
+                String namaKlinik = String.valueOf(klinikButton.getSelectedItem());
+                klinik.setNama(namaKlinik);
+                Klinik.mendaftarKlinik(klinik);
+                Pasien.tambahPasienBaru(pasien);
+                JOptionPane.showMessageDialog(null, "Nomor Rekam Medis Anda : " + pasien.getNomorRekamMedis());
+                JOptionPane.showMessageDialog(null, "Data Anda Telah Terdaftar");
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(null, ex);
             }
-        });
+        }
     }
 }
