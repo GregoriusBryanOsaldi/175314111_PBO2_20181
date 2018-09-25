@@ -145,7 +145,7 @@ public class DaftarPasienBaru extends JDialog {
 
         //Tombol Simpan
         saveButton = new JButton("SIMPAN");
-        saveButton.setBounds(240, 300, 80, 30);
+        saveButton.setBounds(240, 270, 80, 30);
         this.add(saveButton);
         saveButton.addActionListener(new ActionListener() {
             @Override
@@ -165,7 +165,7 @@ public class DaftarPasienBaru extends JDialog {
                     String namaKlinik = String.valueOf(klinikButton.getSelectedItem().toString());
                     klinik.setNama(namaKlinik);
                     Pasien.tambahPasienBaru(pasien);
-                    JOptionPane.showMessageDialog(null, "Data Anda Telah Terdaftar");
+                    JOptionPane.showMessageDialog(null, "Data Anda Telah Terdaftar"+bulan);
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(null, ex);
                 }

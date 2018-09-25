@@ -19,6 +19,5 @@ public class TestDaftarPasienBaru {
         test.setTitle("Daftar Pasien Baru");
         test.setSize(550, 350);
         test.setVisible(true);
-        test.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 }
