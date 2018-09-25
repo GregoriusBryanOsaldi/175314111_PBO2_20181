@@ -21,6 +21,11 @@ public class Klinik {
 
     }
 
+    public Klinik(String idKlinik, String nama) {
+        this.idKlinik = idKlinik;
+        this.nama = nama;
+    }
+
     /**
      * mengembalikan nilai variabel idKlinik
      *

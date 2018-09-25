@@ -62,7 +62,7 @@ public class TestModel {
         //Print Output
         antrian.getKlinik().printInfo();
         dokter.printInfo();
-        for (int i = 0; i <antrian.getPasien().size(); i++) {
+        for (int i = 0; i <antrian.getDaftarPasien().size(); i++) {
             antrian.printInfo();
         }
         

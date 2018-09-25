@@ -19,7 +19,6 @@ public class Pasien {
     private String nomorRekamMedis, NIK;
     private int tanggalLahir, bulanLahir, tahunLahir;
     public static ArrayList<Pasien> daftarPasien = new ArrayList<Pasien>();
-    private String noRM;
 
     /**
      * konstruktor untuk mendeklarasikan kelas Pasien
@@ -53,7 +52,6 @@ public class Pasien {
         this.tanggalLahir = tanggalLahir;
         this.bulanLahir = bulanLahir;
         this.tahunLahir = tahunLahir;
-        this.noRM = noRM;
     }
 
     /**
@@ -133,7 +131,8 @@ public class Pasien {
      */
     public void setNIK(String NIK) throws Exception {
         if (NIK.length() == 16) {
-            this.NIK = NIK;
+            String nik=NIK;
+            this.setNomorRekamMedis(nik);
         } else {
             throw new Exception("Nomor Induk Kependudukan terdiri dari 16 karakter");
         }
@@ -167,7 +166,7 @@ public class Pasien {
         //pengecekan panjang karakter variabel nomorRekamMedis harus sama dengan 16
         if (nomorRekamMedis.length() == 16) {
             //nilai variabel nomorRekamMedis sama dengan NIK
-            this.nomorRekamMedis = NIK;
+            this.nomorRekamMedis = nomorRekamMedis;
         } else {
             //pesan jika bernilai false
             throw new Exception("Nomor Rekam Medis terdiri dari 16 karakter ");
@@ -298,12 +297,12 @@ public class Pasien {
         System.out.printf("%-25s", "Nomor Rekam Medis Pasien");
         System.out.println(": " + getNomorRekamMedis());
         System.out.printf("%-25s", "Nama Pasien");
-        System.out.println(": " + nama);
+        System.out.println(": " + getNama());
         System.out.printf("%-25s", "Tempat, Tanggal Lahir");
-        System.out.print(": " + tempatLahir + " , ");
+        System.out.print(": " + getTempatLahir() + " , ");
         getTanggalKelahiran();
         System.out.printf("%-25s", "Alamat");
-        System.out.println(": " + alamat);
+        System.out.println(": " + getAlamat());
         System.out.println("");
     }
 }

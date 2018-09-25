@@ -6,7 +6,6 @@
 package Model;
 
 import java.util.ArrayList;
-import javax.swing.JLabel;
 
 /**
  *
@@ -17,7 +16,7 @@ public class AntrianPasien {
     private int tanggalAntrian, bulanAntrian, tahunAntrian;
     private Klinik klinik;//mendeklarasikan variabel klinik dengan tipe objek Klinik
     private ArrayList<Pasien> daftarPasienAntri = new ArrayList<Pasien>();//mendeklarasikan variabel array pasienList dengan tipe objek ArrayList
-    private static ArrayList<AntrianPasien> antrianPasien = new ArrayList<AntrianPasien>();
+    public static ArrayList<AntrianPasien> antrianPasien = new ArrayList<AntrianPasien>();
 
     public int getTanggalAntrian() {
         return tanggalAntrian;
@@ -74,7 +73,7 @@ public class AntrianPasien {
      *
      * @return
      */
-    public ArrayList<Pasien> getPasien() {
+    public ArrayList<Pasien> getDaftarPasien() {
         return daftarPasienAntri;
     }
 
@@ -83,7 +82,7 @@ public class AntrianPasien {
      *
      * @param pasien
      */
-    public void setPasien(ArrayList<Pasien> pasien) {
+    public void setDaftarPasien(ArrayList<Pasien> pasien) {
         this.daftarPasienAntri = pasien;
     }
 
@@ -96,11 +95,11 @@ public class AntrianPasien {
         daftarPasienAntri.add(pasien);
     }
 
-    public static void daftarPasien(Pasien pasien, int tanggal, int bulan, int tahun, Klinik klinik) {
+    public static void daftarPasien(Pasien pasien, int tanggal, int bulan, int tahun, Klinik klinik) throws Exception {
         if (cariAntrian(tanggal, bulan, tahun, klinik) == -1) {
             AntrianPasien.antrianPasien.get(cariAntrian(tanggal, bulan, tahun, klinik)).Mendaftar(pasien);
         } else {
-            
+            buatAntrian(tanggal, bulan, tahun, klinik);
         }
     }
 
@@ -138,6 +137,15 @@ public class AntrianPasien {
             antrianPasien.add(antrian);
         } else {
             throw new Exception("Data sudah terdaftar");
+        }
+    }
+
+    public void printInfo() {
+        System.out.println("");
+        System.out.printf("%-20s", "");
+        System.out.println("Daftar Antrian Pasien" + "\n");
+        for (int i = 0; i < daftarPasienAntri.size(); i++) {
+            daftarPasienAntri.get(i).printInfo(); //mengeprint data pasien setiap index
         }
     }
 
