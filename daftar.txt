@@ -1,2 +1,2 @@
-nama = puspa, alamat = klaten
-nama = adi, alamat = klaten
+puspa	klaten
+adi	klaten

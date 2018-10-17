@@ -7,6 +7,7 @@ package Model;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -282,7 +283,7 @@ public class Pasien {
      *
      * @return
      */
-    public static ArrayList<Pasien> daftarPasienKlinik() {
+    public static ArrayList<Pasien> getDaftarPasien() {
         return daftarPasien;
     }
 
@@ -341,6 +342,34 @@ public class Pasien {
      * @param file
      */
     public static void bacaDaftarPasien(File file) {
+        FileInputStream fis = null;
+        String hasil = "";
+        int dataInt;
+        boolean nama = false;
+        boolean alamat = false;
+        Pasien temp = new Pasien();
+        try {
+            fis = new FileInputStream(file);
+            while ((dataInt = fis.read()) != -1) {
+                if ((char) dataInt != '\n') {
+                    if ((char) dataInt != '\t') {
+                        hasil = hasil + daftarPasien.add(temp);
+                    } else if (nama == false) {
+                        temp.setNama(hasil);
+                        nama = true;
+                        hasil = "";
+                    } else if (alamat == false) {
+                        temp.setAlamat(hasil);
+                        alamat = true;
+                        hasil = "";
+                    }
+                }
+            }
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Pasien.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Pasien.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
     }
 
@@ -363,7 +392,7 @@ public class Pasien {
 
     @Override
     public String toString() {
-        return "nama = " + nama + "\t" + "alamat = " + alamat + "\n";
+        return nama + "\t" + alamat + "\n";
     }
 
 }
