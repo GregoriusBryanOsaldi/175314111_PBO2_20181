@@ -353,7 +353,7 @@ public class Pasien {
             while ((dataInt = fis.read()) != -1) {
                 if ((char) dataInt != '\n') {
                     if ((char) dataInt != '\t') {
-                        hasil = hasil + daftarPasien.add(temp);
+                        hasil = hasil + (char)dataInt;
                     } else if (nama == false) {
                         temp.setNama(hasil);
                         nama = true;
