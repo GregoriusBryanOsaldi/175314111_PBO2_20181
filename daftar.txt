@@ -1,0 +1,2 @@
+nama = puspa, alamat = klaten
+nama = adi, alamat = klaten

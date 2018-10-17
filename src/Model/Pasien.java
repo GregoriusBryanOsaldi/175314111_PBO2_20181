@@ -5,9 +5,17 @@
  */
 package Model;
 
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import sun.net.ftp.FtpClient;
 
 /**
  *
@@ -18,6 +26,10 @@ public class Pasien {
     private String nama, alamat, tempatLahir;
     private String nomorRekamMedis, NIK;
     private int tanggalLahir, bulanLahir, tahunLahir;
+
+    /**
+     *
+     */
     public static ArrayList<Pasien> daftarPasien = new ArrayList<Pasien>();
 
     /**
@@ -47,6 +59,14 @@ public class Pasien {
         this.tahunLahir = tahunLahir;
     }
 
+    /**
+     *
+     * @param nama
+     * @param tanggalLahir
+     * @param bulanLahir
+     * @param tahunLahir
+     * @param noRM
+     */
     public Pasien(String nama, int tanggalLahir, int bulanLahir, int tahunLahir, String noRM) {
         this.nama = nama;
         this.tanggalLahir = tanggalLahir;
@@ -291,6 +311,40 @@ public class Pasien {
     }
 
     /**
+     *
+     * @param file
+     */
+    public static void simpanDaftarPasien(File file) {
+        FileOutputStream fos = null;
+        try {
+            fos = new FileOutputStream(file, false);
+            for (int i = 0; i < daftarPasien.size(); i++) {
+                String data = daftarPasien.get(i).toString();
+                fos.write(data.getBytes());
+
+            }
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Pasien.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Pasien.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                fos.close();
+            } catch (IOException ex) {
+                Logger.getLogger(Pasien.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
+
+    /**
+     *
+     * @param file
+     */
+    public static void bacaDaftarPasien(File file) {
+
+    }
+
+    /**
      * method ini membuat kita lebih mudah saat akan menampilkannya di main
      *
      */
@@ -306,4 +360,10 @@ public class Pasien {
         System.out.println(": " + getAlamat());
         System.out.println("");
     }
+
+    @Override
+    public String toString() {
+        return "nama = " + nama + "\t" + "alamat = " + alamat + "\n";
+    }
+
 }
