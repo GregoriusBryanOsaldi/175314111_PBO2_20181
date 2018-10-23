@@ -184,15 +184,15 @@ public class Pasien {
      * @param nomorRekamMedis
      * @throws Exception
      */
-    public void setNomorRekamMedis(String nomorRekamMedis) throws Exception {
+    public void setNomorRekamMedis(String nomorRekamMedis) {
         //pengecekan panjang karakter variabel nomorRekamMedis harus sama dengan 16
-        if (nomorRekamMedis.length() == 16) {
-            //nilai variabel nomorRekamMedis sama dengan NIK
-            this.nomorRekamMedis = nomorRekamMedis;
-        } else {
-            //pesan jika bernilai false
-            throw new Exception("Nomor Rekam Medis terdiri dari 16 karakter ");
-        }
+        //if (nomorRekamMedis.length() == 16) {
+        //nilai variabel nomorRekamMedis sama dengan NIK
+        this.nomorRekamMedis = nomorRekamMedis;
+        //  } else {
+        //pesan jika bernilai false
+        //      throw new Exception("Nomor Rekam Medis terdiri dari 16 karakter ");
+        // }
     }
 
     /**
@@ -345,6 +345,7 @@ public class Pasien {
         FileInputStream fis = null;
         String hasil = "";
         int dataInt;
+        boolean noRM = false;
         boolean nama = false;
         boolean alamat = false;
         Pasien temp = new Pasien();
@@ -353,16 +354,27 @@ public class Pasien {
             while ((dataInt = fis.read()) != -1) {
                 if ((char) dataInt != '\n') {
                     if ((char) dataInt != '\t') {
-                        hasil = hasil + (char)dataInt;
-                    } else if (nama == false) {
-                        temp.setNama(hasil);
-                        nama = true;
-                        hasil = "";
-                    } else if (alamat == false) {
-                        temp.setAlamat(hasil);
-                        alamat = true;
-                        hasil = "";
+                        hasil = hasil + (char) dataInt;
+                    } else {
+                        if (noRM == false) {
+                            temp.setNomorRekamMedis(hasil);
+                            noRM = true;
+                            hasil = "";
+                        } else if (nama == false) {
+                            temp.setNama(hasil);
+                            nama = true;
+                            hasil = "";
+                        }
                     }
+                } else {
+                    temp.setAlamat(hasil);
+                    alamat = true;
+                    hasil = "";
+                    Pasien.tambahPasienBaru(temp);
+                    noRM = false;
+                    nama = false;
+                    alamat = false;
+                    temp=new Pasien();
                 }
             }
         } catch (FileNotFoundException ex) {
@@ -392,7 +404,7 @@ public class Pasien {
 
     @Override
     public String toString() {
-        return nama + "\t" + alamat + "\n";
+        return nomorRekamMedis + "\t" + nama + "\t" + alamat + "\n";
     }
 
 }
