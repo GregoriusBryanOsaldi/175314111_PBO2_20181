@@ -5,6 +5,7 @@
  */
 package Model;
 
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -12,7 +13,7 @@ import java.util.Date;
  *
  * @author 175314111/Gregorius Bryan Osaldi
  */
-public class Dokter {
+public class Dokter implements Serializable{
 
     private String nomorPegawai; //mendeklarasikan variabel nomorPegawai dengan tipe data String
     private String nama, alamat, tempatLahir; //mendeklarasikan variable nama, alamat, tempatLahir dengan tipe data String

@@ -5,13 +5,14 @@
  */
 package Model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *
  * @author admin
  */
-public class Klinik {
+public class Klinik implements Serializable{
 
     private String idKlinik;
     private String nama;

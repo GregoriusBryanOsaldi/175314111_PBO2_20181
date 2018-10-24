@@ -11,6 +11,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -22,7 +23,7 @@ import sun.net.ftp.FtpClient;
  *
  * @author DELL
  */
-public class Pasien {
+public class Pasien implements Serializable{
 
     private String nama, alamat, tempatLahir;
     private String nomorRekamMedis, NIK;
@@ -384,6 +385,7 @@ public class Pasien {
         }
 
     }
+    
 
     /**
      * method ini membuat kita lebih mudah saat akan menampilkannya di main

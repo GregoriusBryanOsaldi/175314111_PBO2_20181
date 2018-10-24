@@ -5,13 +5,14 @@
  */
 package Model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *
  * @author 175314111/Gregorius Bryan Osaldi
  */
-public class AntrianPasien {
+public class AntrianPasien implements Serializable{
 
     private int tanggalAntrian, bulanAntrian, tahunAntrian;
     private Klinik klinik;//mendeklarasikan variabel klinik dengan tipe objek Klinik
