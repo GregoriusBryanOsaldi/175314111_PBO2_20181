@@ -323,7 +323,6 @@ public class Pasien implements Serializable{
             for (int i = 0; i < daftarPasien.size(); i++) {
                 String data = daftarPasien.get(i).toString();
                 fos.write(data.getBytes());
-
             }
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Pasien.class.getName()).log(Level.SEVERE, null, ex);
